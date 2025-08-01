@@ -9,7 +9,7 @@ script = ExtResource("1_18uf0")
 spawn_point = NodePath("SpawnPoint")
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(156, 369)
+position = Vector2(305, 604)
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(322, 277)
