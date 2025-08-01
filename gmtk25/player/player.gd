@@ -79,7 +79,7 @@ func process_input(event : InputEvent) -> void:
 		should_walk_left = event.is_pressed()
 		
 
-func _physics_process(delta: float) -> 
+func _physics_process(delta: float) -> void:
 	rotation = (get_global_mouse_position() - global_position).angle() +(PI/2)
 
 

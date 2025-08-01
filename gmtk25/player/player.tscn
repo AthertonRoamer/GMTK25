@@ -1,9 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bql7743e7e2in"]
 
 [ext_resource type="Script" uid="uid://dyq28pqep14p8" path="res://player/player.gd" id="1_oul6g"]
-
 [ext_resource type="Texture2D" uid="uid://d0vyncuy087pt" path="res://assets/player_ss.png" id="2_rkbax"]
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
 radius = 13.0
@@ -19,9 +17,7 @@ script = ExtResource("1_oul6g")
 texture_filter = 1
 position = Vector2(1, -3)
 texture = ExtResource("2_rkbax")
-
 hframes = 2
-
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -33,5 +29,6 @@ position = Vector2(7, -32)
 shape = SubResource("CircleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+physics_interpolation_mode = 2
 zoom = Vector2(3, 3)
 position_smoothing_enabled = true
