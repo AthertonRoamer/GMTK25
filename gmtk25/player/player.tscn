@@ -31,7 +31,5 @@ shape = SubResource("CircleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-
 zoom = Vector2(3, 3)
-
 position_smoothing_enabled = true
