@@ -117,6 +117,7 @@ func _physics_process(delta: float) -> void:
 				current_input_actions.append(input_action)
 		input_queue.clear()
 		
+
 		var new_rotation : float= (get_global_mouse_position() - global_position).angle() +(PI/2)
 		if not is_equal_approx(new_rotation, rotation):
 			current_input_actions.append(InputActionRotationChange.new("rotation_change", frame_index, new_rotation))
@@ -133,6 +134,7 @@ func _physics_process(delta: float) -> void:
 	#process input
 	for action in current_input_actions:
 		process_input_action(action)
+
 	
 		
 	walk_direction = Vector2.ZERO
