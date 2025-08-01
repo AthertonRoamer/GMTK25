@@ -102,15 +102,15 @@ func end_loop() -> void:
 func submit_input_record(record : InputRecord) -> void:
 	
 	if player_input_records.size() == record.loop_index - 1:
-		if player_input_records.is_empty():
-			print("record appended - record index: ", record.loop_index,  " array previously empty")
-		else:
-			print("record appended - record index: ", record.loop_index,  " most recent index: ", player_input_records[-1].loop_index)
+		#if player_input_records.is_empty():
+			#print("record appended - record index: ", record.loop_index,  " array previously empty")
+		#else:
+			#print("record appended - record index: ", record.loop_index,  " most recent index: ", player_input_records[-1].loop_index)
 		player_input_records.append(record)
 	else:
-		if player_input_records.is_empty():
-			print("unnecessary - record index: ", record.loop_index,  " array previously empty")
-		else:
-			print("unneccesary - record index: ", record.loop_index,  " most recent index: ", player_input_records[-1].loop_index)
-		push_warning("Input record submitted with index: ", record.loop_index, " Records: ", player_input_records)
+		#if player_input_records.is_empty():
+			#print("unnecessary - record index: ", record.loop_index,  " array previously empty")
+		#else:
+			#print("unneccesary - record index: ", record.loop_index,  " most recent index: ", player_input_records[-1].loop_index)
+		#push_warning("Input record submitted with index: ", record.loop_index, " Records: ", player_input_records)
 		pass
