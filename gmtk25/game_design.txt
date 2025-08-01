@@ -20,4 +20,3 @@ TRAPS/TURRETS:
 	human harvester gate: requires death to open
 	pit, lasers, gates
 	chips and arms could act as keys for gates
-	

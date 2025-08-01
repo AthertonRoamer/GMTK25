@@ -76,7 +76,7 @@ func process_input(event : InputEvent) -> void:
 		
 
 func _physics_process(delta: float) -> void:
-	
+	rotation = (get_global_mouse_position() - global_position).angle() +(PI/2)
 
 	if should_walk_down:
 		walk_direction += Vector2.DOWN
