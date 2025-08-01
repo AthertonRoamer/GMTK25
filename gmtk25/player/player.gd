@@ -36,7 +36,11 @@ var health = starting_health:
 		else:
 			health = v
 			
-var should_walk_up : bool = false
+var should_walk_up : bool = false:
+	set(v):
+		if v != should_walk_up:
+			print("should_walk_up now ", v)
+		should_walk_up = v
 var should_walk_down : bool = false
 var should_walk_right : bool = false
 var should_walk_left : bool = false
@@ -46,7 +50,7 @@ func _ready() -> void:
 	if set_current_friction_from_slow_down_time:
 		#250 px/sec 250 px/sec / 1 sec = 250 px / sec /sec
 		current_friction = walk_max_speed / current_slow_down_time
-		#print("ground friction: ", ground_friction)
+		#print("current friction: ", current_friction)
 	if set_walk_accel_from_time:
 		walk_accel = walk_max_speed / walk_accel_time
 		#print("walk accel ", walk_accel)
@@ -75,8 +79,12 @@ func process_input(event : InputEvent) -> void:
 		should_walk_left = event.is_pressed()
 		
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> 
 	rotation = (get_global_mouse_position() - global_position).angle() +(PI/2)
+
+
+	
+	walk_direction = Vector2.ZERO
 
 	if should_walk_down:
 		walk_direction += Vector2.DOWN
@@ -95,18 +103,15 @@ func _physics_process(delta: float) -> void:
 		v = max(v, 0)
 		velocity = velocity.normalized() * v 
 		
-	##walk
+	#walk
 	var this_walk_accel : Vector2 = walk_direction * walk_accel * delta
 	if (velocity + this_walk_accel).length() <= walk_max_speed: #if accelerating doesnt exceed max speed, accelerate
 		velocity += this_walk_accel
 	elif velocity.length() < walk_max_speed: #if accelerating does exceed max speed but player hasnt reached max speed
 		velocity = walk_max_speed * walk_direction #reach max speed
 		
-	
-	move_and_slide()
-	#reset variables
-
-	walk_direction = Vector2.ZERO
+	if active:
+		move_and_slide()
 	
 
 func take_damage(dmg : float) -> void:
