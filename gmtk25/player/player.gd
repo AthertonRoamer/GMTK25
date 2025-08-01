@@ -38,12 +38,14 @@ var health = starting_health:
 			
 var should_walk_up : bool = false:
 	set(v):
-		if v != should_walk_up:
-			print("should_walk_up now ", v)
 		should_walk_up = v
 var should_walk_down : bool = false
 var should_walk_right : bool = false
 var should_walk_left : bool = false
+
+var input_queue : Array[InputEvent] = []
+var input_record : InputRecord
+var input_record_read_index : int = 0
 
 func _ready() -> void:
 	add_to_group("damagable")
@@ -56,6 +58,12 @@ func _ready() -> void:
 		#print("walk accel ", walk_accel)
 	#set jump time from jump height and jump speed
 	#px / (px/sec) = sec
+	if current:
+		input_record = InputRecord.new()
+		input_record.loop_index = Main.level.loop_manager.current_loop
+	else:
+		$Camera2D.enabled = false
+		modulate = Color(Color.WHITE, 0.5)
 	
 	
 func _input(event : InputEvent) -> void:
@@ -64,26 +72,71 @@ func _input(event : InputEvent) -> void:
 	if not current:
 		return
 	if event.is_action("significant_input"):
-		#save event to input record
-		process_input(event)
-	
-	
-func process_input(event : InputEvent) -> void:
-	if event.is_action("walk_up"):
-		should_walk_up = event.is_pressed()
-	if event.is_action("walk_down"):
-		should_walk_down = event.is_pressed()
-	if event.is_action("walk_right"):
-		should_walk_right = event.is_pressed()
-	if event.is_action("walk_left"):
-		should_walk_left = event.is_pressed()
+		#process_input(event)
+		input_queue.append(event)
 		
+		
+func process_input_action(action : InputAction) -> void: #preforms input based on input actions
+	if action.action_name == "walk_up":
+		should_walk_up = action.pressed
+	if action.action_name == "walk_down":
+		should_walk_down = action.pressed
+	if action.action_name == "walk_right":
+		should_walk_right = action.pressed
+	if action.action_name == "walk_left":
+		should_walk_left = action.pressed
+	if action.action_name == "rotation_change":
+		rotation = action.rotation
+		
+		
+func make_input_action_or_null(event : InputEvent, frame_index : int = 0) -> InputAction: #saves input events as input actions
+	if event.is_action("walk_up") and should_walk_up != event.is_pressed():
+		return InputActionKeyChange.new("walk_up", frame_index, event.is_pressed())
+	if event.is_action("walk_down") and should_walk_down != event.is_pressed():
+		return InputActionKeyChange.new("walk_down", frame_index, event.is_pressed())
+	if event.is_action("walk_right") and should_walk_right != event.is_pressed():
+		return InputActionKeyChange.new("walk_right", frame_index, event.is_pressed())
+	if event.is_action("walk_left") and should_walk_left != event.is_pressed():
+		return InputActionKeyChange.new("walk_left", frame_index, event.is_pressed())
+	return null
+
 
 func _physics_process(delta: float) -> void:
-	rotation = (get_global_mouse_position() - global_position).angle() +(PI/2)
+	if not active:
+		return
+	
+	#handle input
+	var current_input_actions : Array[InputAction] = [] #the array to be populated with input data
+	var frame_index : int = Main.level.loop_manager.frame_index
+	
+	if current: #receive natural input
+		#take input and make into input actions
+		for event in input_queue:
+			var input_action : InputAction = make_input_action_or_null(event, frame_index)
+			if input_action:
+				current_input_actions.append(input_action)
+		input_queue.clear()
+		
 
+		var new_rotation : float= (get_global_mouse_position() - global_position).angle() +(PI/2)
+		if not is_equal_approx(new_rotation, rotation):
+			current_input_actions.append(InputActionRotationChange.new("rotation_change", frame_index, new_rotation))
+		#save input
+		input_record.input_action_list.append_array(current_input_actions)
+	
+	else: #not current
+		#load input
+		while (input_record.input_action_list.size() > input_record_read_index and input_record.input_action_list[input_record_read_index].frame == frame_index):
+			current_input_actions.append(input_record.input_action_list[input_record_read_index])
+			input_record_read_index += 1
+		
+		
+	#process input
+	for action in current_input_actions:
+		process_input_action(action)
 
 	
+		
 	walk_direction = Vector2.ZERO
 
 	if should_walk_down:
@@ -110,8 +163,7 @@ func _physics_process(delta: float) -> void:
 	elif velocity.length() < walk_max_speed: #if accelerating does exceed max speed but player hasnt reached max speed
 		velocity = walk_max_speed * walk_direction #reach max speed
 		
-	if active:
-		move_and_slide()
+	move_and_slide()
 	
 
 func take_damage(dmg : float) -> void:
@@ -120,3 +172,9 @@ func take_damage(dmg : float) -> void:
 
 func die() -> void:
 	queue_free()
+	
+	
+func _exit_tree() -> void:
+	if current:
+		print("player submitting record")
+		Main.level.loop_manager.submit_input_record(input_record)
