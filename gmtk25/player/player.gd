@@ -102,8 +102,8 @@ func _physics_process(delta: float) -> void:
 	elif velocity.length() < walk_max_speed: #if accelerating does exceed max speed but player hasnt reached max speed
 		velocity = walk_max_speed * walk_direction #reach max speed
 		
-	
-	move_and_slide()
+	if active:
+		move_and_slide()
 	#reset variables
 
 	walk_direction = Vector2.ZERO

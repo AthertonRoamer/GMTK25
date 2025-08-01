@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=3 uid="uid://jx28hx4fcuuq"]
+
+[ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
+[ext_resource type="Script" uid="uid://7u0evfvj46nv" path="res://hud/loop_time_display.gd" id="2_2gk58"]
+[ext_resource type="Script" uid="uid://c4bpr74svus7e" path="res://hud/loop_count_display.gd" id="2_w8tcp"]
+[ext_resource type="Script" uid="uid://uj6rsjxpgmub" path="res://hud/loop_end_menu.gd" id="3_318vg"]
+[ext_resource type="Script" uid="uid://c77px8pq2lx3g" path="res://hud/pause_menu.gd" id="5_svhta"]
+[ext_resource type="Script" uid="uid://c522wu55mbahm" path="res://hud/final_loop_display.gd" id="6_fjv1a"]
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6ca3a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0815972
+anchor_top = 0.118827
+anchor_right = 0.176215
+anchor_bottom = 0.112654
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="LoopCountDisplay" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Loop 1"
+script = ExtResource("2_w8tcp")
+
+[node name="LoopTimeDisplay" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "60.00"
+script = ExtResource("2_2gk58")
+
+[node name="LoopEndMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -20.0
+offset_right = 134.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_318vg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoopEndMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LoopEndMenu/VBoxContainer"]
+layout_mode = 2
+text = "Loop Ended"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="LoopEndMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="LoopEndMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Next Loop"
+
+[node name="PauseMenu" type="VBoxContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -20.0
+offset_right = 134.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_svhta")
+
+[node name="Restart" type="Button" parent="PauseMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="Control" type="Control" parent="PauseMenu"]
+layout_mode = 2
+
+[node name="Quit to Menu" type="Button" parent="PauseMenu"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+text = "Quit to Menu"
+
+[node name="FinalLoopDisplay" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -163.0
+offset_right = 67.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Final Loop Ended"
+horizontal_alignment = 1
+script = ExtResource("6_fjv1a")
+
+[connection signal="pressed" from="LoopEndMenu/VBoxContainer/Button" to="LoopEndMenu" method="_on_button_pressed"]
+[connection signal="pause_menu_open_changed" from="PauseMenu" to="LoopEndMenu" method="_on_pause_menu_pause_menu_open_changed"]
+[connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Quit to Menu" to="PauseMenu" method="_on_quit_to_menu_pressed"]
