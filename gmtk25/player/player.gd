@@ -79,14 +79,16 @@ func _input(event : InputEvent) -> void:
 func process_input_action(action : InputAction) -> void: #preforms input based on input actions
 	if action.action_name == "walk_up":
 		should_walk_up = action.pressed
-	if action.action_name == "walk_down":
+	elif action.action_name == "walk_down":
 		should_walk_down = action.pressed
-	if action.action_name == "walk_right":
+	elif action.action_name == "walk_right":
 		should_walk_right = action.pressed
-	if action.action_name == "walk_left":
+	elif action.action_name == "walk_left":
 		should_walk_left = action.pressed
-	if action.action_name == "rotation_change":
+	elif action.action_name == "rotation_change":
 		rotation = action.rotation
+	elif action.action_name == "player_primary":
+		take_primary_action(action.global_mouse_position)
 		
 		
 func make_input_action_or_null(event : InputEvent, frame_index : int = 0) -> InputAction: #saves input events as input actions
@@ -98,6 +100,8 @@ func make_input_action_or_null(event : InputEvent, frame_index : int = 0) -> Inp
 		return InputActionKeyChange.new("walk_right", frame_index, event.is_pressed())
 	if event.is_action("walk_left") and should_walk_left != event.is_pressed():
 		return InputActionKeyChange.new("walk_left", frame_index, event.is_pressed())
+	if event.is_action_pressed("player_primary") and not event.is_echo():
+		return InputActionMouseClick.new("player_primary", frame_index, get_global_mouse_position())
 	return null
 
 
@@ -164,6 +168,11 @@ func _physics_process(delta: float) -> void:
 		velocity = walk_max_speed * walk_direction #reach max speed
 		
 	move_and_slide()
+	
+	
+func take_primary_action(_global_mouse_position : Vector2) -> void:
+	#print("fire")
+	pass
 	
 
 func take_damage(dmg : float) -> void:
