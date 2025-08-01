@@ -79,9 +79,13 @@ func process_input(event : InputEvent) -> void:
 		should_walk_left = event.is_pressed()
 		
 
-func _physics_process(delta: float) -> void:
+func _physics_process(delta: float) -> 
+	rotation = (get_global_mouse_position() - global_position).angle() +(PI/2)
+
+
 	
 	walk_direction = Vector2.ZERO
+
 	if should_walk_down:
 		walk_direction += Vector2.DOWN
 	if should_walk_up:
