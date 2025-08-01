@@ -3,12 +3,13 @@ extends Node2D
 
 signal loop_began
 signal loop_ended
+signal final_loop_ended
 
 var level : CustomLevel
 
 @export_group("Loop")
-@export var loop_time : float = 60 #seconds
-@export var loops_allowed : float = 5
+@export var loop_time : float = 5 #seconds
+@export var loops_allowed : float = 3
 var current_loop : int = 0
 var current_loop_time : float = 0
 var loop_progressing : bool = false
@@ -46,7 +47,7 @@ func run_next_loop() -> void:
 	
 	
 func reset_loop_timer() -> void:
-	current_loop_time = 0
+	current_loop_time = loop_time
 	
 	
 func spawn_current_player() -> void:
@@ -62,8 +63,9 @@ func spawn_current_player() -> void:
 func _process(delta) -> void:
 	if not loop_progressing:
 		return
-	current_loop_time += delta
-	if current_loop_time >= loop_time:
+	current_loop_time -= delta
+	if current_loop_time <= 0:
+		current_loop_time = 0
 		end_loop()
 		
 		
@@ -72,4 +74,6 @@ func end_loop() -> void:
 	map.set_players_active(false)
 	map.active = false
 	loop_ended.emit()
+	if current_loop == loops_allowed:
+		final_loop_ended.emit()
 	

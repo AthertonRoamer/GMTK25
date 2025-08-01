@@ -1,14 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq262l1or6oyu"]
+[gd_scene load_steps=2 format=3 uid="uid://bq262l1or6oyu"]
 
 [ext_resource type="Script" uid="uid://drnqtad1pge4m" path="res://levels/test/test_level_1.gd" id="1_2v3iu"]
-[ext_resource type="Script" uid="uid://btawa3eq0e5t8" path="res://loop_system/loop_manager.gd" id="2_l86f2"]
-[ext_resource type="PackedScene" uid="uid://defjcqdh5khgq" path="res://levels/maps/test/test_map_1.tscn" id="3_02l7c"]
 
-[node name="TestLevel1" type="Node2D" node_paths=PackedStringArray("loop_manager")]
+[node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_2v3iu")
-loop_manager = NodePath("LoopManager")
-
-[node name="LoopManager" type="Node2D" parent="."]
-script = ExtResource("2_l86f2")
-map_scene = ExtResource("3_02l7c")
-metadata/_custom_type_script = "uid://btawa3eq0e5t8"
