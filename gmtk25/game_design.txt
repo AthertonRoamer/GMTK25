@@ -1,0 +1,23 @@
+GMTK 25 THEME: LOOP
+
+MAIN IDEA: 
+	dude goes in high tech base and each level is a room full of security made of traps and turrets.
+	each level gives the player a certain amount of loops each having a certain amount of moves.
+	whenever the player dies the next loop begins, if he is saved in the future the player regains
+	those lost moves.
+
+LOOPING:
+	two actions per move per loop or bullets for use at any time one move per turn
+	actions:
+		moving
+		attacking
+
+TRAPS/TURRETS:
+	bullet: half health
+	sniper: kills
+	rough terrain: halves movespeed
+	suppressor trap: cant shoot inside effect
+	human harvester gate: requires death to open
+	pit, lasers, gates
+	chips and arms could act as keys for gates
+	
