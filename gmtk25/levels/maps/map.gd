@@ -7,4 +7,5 @@ var active : bool = false
 
 func set_players_active(p_active : bool) -> void:
 	for player in players:
-		player.active = p_active
+		if is_instance_valid(player):
+			player.active = p_active
