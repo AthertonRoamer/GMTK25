@@ -20,7 +20,8 @@ func _on_current_player_died() -> void:
 	toggle_cameras_enabled = true
 	map.clear_dead_players()
 	activte_camera_by_index(0)
-	Main.level.hud.alert_manager.add_alert("Camera switching to past selves\nClick to switch between them", 5)
+	if not map.players.is_empty():
+		Main.level.hud.alert_manager.add_alert("Camera switching to past selves\nClick to switch between them", 5)
 	
 	
 func _on_camera_player_died() -> void:

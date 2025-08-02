@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnfrwsq3ib5k7"]
 
-[ext_resource type="Script" uid="uid://dmvdt3nq0ff6q" path="res://alert.gd" id="1_cqkbp"]
+[ext_resource type="Script" uid="uid://dmvdt3nq0ff6q" path="res://hud/hud_alert_system/alert.gd" id="1_cqkbp"]
 
 [node name="Alert" type="VBoxContainer"]
 offset_right = 40.0

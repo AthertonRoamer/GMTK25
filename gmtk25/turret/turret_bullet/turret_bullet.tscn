@@ -1,9 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://cxb8hycll1kwn"]
+[gd_scene load_steps=19 format=3 uid="uid://cwn5kuvawj3h"]
 
-
-[ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_u21hw"]
-[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://projectile/Projectiles.png" id="2_qbu20"]
-
+[ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_we85h"]
+[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://projectile/Projectiles.png" id="2_g1d77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
@@ -132,7 +130,7 @@ color_ramp = SubResource("GradientTexture1D_ov85m")
 [node name="smg_bullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_u21hw")
+script = ExtResource("1_we85h")
 speed = 1600.0
 damage = 2
 extinguish_on_impact = true
@@ -144,7 +142,7 @@ impact_knockback = 100
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.75, 1.75)
-texture = ExtResource("2_qbu20")
+texture = ExtResource("2_g1d77")
 hframes = 8
 frame = 2
 
@@ -161,7 +159,7 @@ texture_filter = 1
 material = SubResource("CanvasItemMaterial_g0ebo")
 position = Vector2(-12, 0)
 amount = 32
-texture = ExtResource("2_qbu20")
+texture = ExtResource("2_g1d77")
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_1brg8")
 
@@ -169,7 +167,7 @@ process_material = SubResource("ParticleProcessMaterial_1brg8")
 visible = false
 material = SubResource("CanvasItemMaterial_61q2t")
 position = Vector2(18, 0)
-texture = ExtResource("2_qbu20")
+texture = ExtResource("2_g1d77")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
