@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://defjcqdh5khgq"]
+[gd_scene load_steps=10 format=4 uid="uid://defjcqdh5khgq"]
 
 [ext_resource type="Script" uid="uid://cbddoc06qeokt" path="res://levels/maps/test/test_map_1.gd" id="1_18uf0"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_kwgks"]
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="3_18uf0"]
 [ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_g0t7c"]
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="4_kwgks"]
+[ext_resource type="PackedScene" uid="uid://blybn2ovwj2k2" path="res://placeables/laser_emitter.tscn" id="6_bng35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n36j1"]
 texture = ExtResource("2_kwgks")
@@ -183,3 +184,8 @@ texture_scale = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g0t7c")
+
+[node name="lasers" type="Node2D" parent="."]
+
+[node name="LaserEmitter" parent="lasers" instance=ExtResource("6_bng35")]
+position = Vector2(34, 432)
