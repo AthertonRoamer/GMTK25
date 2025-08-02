@@ -18,7 +18,14 @@ func _ready() -> void:
 		push_warning("Ship area is a child of a non-ship")
 
 func get_visible_enemies() -> Array:
-	return get_overlapping_bodies().filter(func(body): return body.is_in_group("player"))
+	return get_overlapping_bodies().filter(func(body): return body.is_in_group("player") and can_hit(body))
+	
+	
+func can_hit(body : Node2D) -> bool:
+	$RayCast2D.target_position = to_local(body.global_position)
+	$RayCast2D.force_raycast_update()
+	return $RayCast2D.is_colliding() and $RayCast2D.get_collider() == body
+	
 	
 	
 	

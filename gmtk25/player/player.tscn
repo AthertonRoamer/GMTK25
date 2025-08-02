@@ -33,13 +33,13 @@ shape = SubResource("CircleShape2D_rkbax")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
 [node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(7, -33)
 script = ExtResource("3_yw30f")
-cool_down_time = 0.1
+cool_down_time = 0.3
 projectile_scene = ExtResource("4_qjkh3")
 fire_position_node = NodePath(".")
 
