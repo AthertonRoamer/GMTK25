@@ -11,3 +11,8 @@ func _on_level_beaten() -> void:
 
 func _on_button_pressed() -> void:
 	Main.game.level_manager.transfer_to_next_level()
+	
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("resume_game") and visible:
+		Main.game.level_manager.transfer_to_next_level()

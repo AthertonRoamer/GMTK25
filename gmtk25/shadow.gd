@@ -6,7 +6,7 @@ func _ready():
 	self.visible = true
 	modulate.a = 1.0  # Fully opaque
 
-func activate(is_active: bool):
+func activate(_is_active: bool):
 	reveal_area()
 
 func reveal_area():

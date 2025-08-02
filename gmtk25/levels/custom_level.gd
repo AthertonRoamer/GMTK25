@@ -1,6 +1,7 @@
 class_name CustomLevel
 extends Level
 
+@export var time_travel : bool = true
 @export var auto_load_children : bool = true
 @export_group("Loop")
 @export var loop_time : float = 5 #seconds
@@ -28,6 +29,8 @@ func _ready() -> void:
 		loop_manager.loops_allowed = loops_allowed
 		loop_manager.map_scene = map_scene
 		add_child(loop_manager)
+		if not time_travel:
+			loop_manager.saved_player_handler.enabled = false
 		var hud_layer = hud_layer_scene.instantiate()
 		add_child(hud_layer)
 		hud = hud_layer.get_child(0)

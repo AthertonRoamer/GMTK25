@@ -246,6 +246,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_8x3on")
 script = ExtResource("2_7fn7a")
+skip_loading_screen = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

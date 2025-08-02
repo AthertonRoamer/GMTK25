@@ -7,6 +7,8 @@ var level : CustomLevel
 
 var active : bool = true #moving or listening for input
 var current : bool = true #if not current its a past-self
+var awaiting_saved_run_completion : bool = false
+var running_as_saved_player : bool = false
 
 
 #region physics variables
@@ -27,6 +29,7 @@ var walk_direction : Vector2 = Vector2.ZERO
 var dummy_body_scene : PackedScene = preload("res://dummies/player_dummy.tscn")
 
 var dying : bool = false
+var should_die : = false
 
 
 
@@ -39,7 +42,7 @@ var health = starting_health:
 	set(v):
 		if v <= 0:
 			health = 0
-			die()
+			queue_die()
 		else:
 			health = v
 			
@@ -68,7 +71,15 @@ func _ready() -> void:
 	if current:
 		input_record = InputRecord.new()
 		input_record.loop_index = Main.level.loop_manager.current_loop
+		set_visuals_as_current_player(true)
+	else:
+		set_visuals_as_current_player(false)
+		
+		
+func set_visuals_as_current_player(b : bool) -> void:
+	if b:
 		$StandardCamera.enabled = true
+		modulate  = Color.WHITE
 	else:
 		$StandardCamera.enabled = false
 		modulate = Color(Color.WHITE, 0.5)
@@ -114,7 +125,12 @@ func make_input_action_or_null(event : InputEvent, frame_index : int = 0) -> Inp
 
 
 func _physics_process(delta: float) -> void:
+	if should_die:
+		die()
 	if not active:
+		return
+	
+	if awaiting_saved_run_completion:
 		return
 	
 	#handle input
@@ -141,6 +157,9 @@ func _physics_process(delta: float) -> void:
 		while (input_record.input_action_list.size() > input_record_read_index and input_record.input_action_list[input_record_read_index].frame == frame_index):
 			current_input_actions.append(input_record.input_action_list[input_record_read_index])
 			input_record_read_index += 1
+		if frame_index == input_record.death_frame + 1:
+			print("Past self has been saved")
+			Main.level.loop_manager.saved_player_handler.submit_saved_player(self, input_record)
 		
 		
 	#process input
@@ -174,12 +193,31 @@ func _physics_process(delta: float) -> void:
 		velocity += this_walk_accel
 	elif velocity.length() < walk_max_speed: #if accelerating does exceed max speed but player hasnt reached max speed
 		velocity = walk_max_speed * walk_direction #reach max speed
+	elif velocity.length() > walk_max_speed:
+		velocity = walk_max_speed * walk_direction
 		
 	move_and_slide()
 	
 	
+func prepare_to_run_as_saved_player() -> void:
+	running_as_saved_player = true
+	current = true
+	set_visuals_as_current_player(true)
+	velocity = Vector2.ZERO
+	input_queue.clear()
+	should_walk_down = false
+	should_walk_left = false
+	should_walk_right = false
+	should_walk_up = false
+	
+	
+func prepare_to_run_as_once_current_player() -> void: #while saved player runs
+	awaiting_saved_run_completion = true
+	set_visuals_as_current_player(false)
+	
+	
 func take_primary_action(_global_mouse_position : Vector2) -> void:
-	$StandardGun.projectile_direction = Vector2.UP	.rotated(rotation)
+	$StandardGun.projectile_direction = Vector2.UP.rotated(rotation)
 	$StandardGun.fire()
 	
 	
@@ -189,13 +227,13 @@ func set_camera_active(cam_active : bool) -> void:
 
 
 func take_damage(dmg : float, _damage_type: String = "default") -> void:
-
 	health -= dmg
 
 
 func die() -> void:
-	#if current: 
-		#Main.level.hud.alert_manager.add_alert("You have died", 5.0)
+	if current: 
+		input_record.death_frame = Main.level.loop_manager.frame_index
+		input_record.seconds_remaining_at_death = Main.level.loop_manager.current_loop_time
 	dying = true
 	var dummy : PlayerDummy = dummy_body_scene.instantiate()
 	dummy.position = position
@@ -207,5 +245,13 @@ func die() -> void:
 
 func _exit_tree() -> void:
 	if current:
-		#print("player submitting record")
-		Main.level.loop_manager.submit_input_record(input_record)
+		if running_as_saved_player:
+			Main.level.loop_manager.saved_player_handler.submit_input_record(input_record)
+		else:
+			#print("player submitting record")
+			Main.level.loop_manager.submit_input_record(input_record)
+			
+			
+func queue_die() -> void:
+	active = false
+	should_die = true

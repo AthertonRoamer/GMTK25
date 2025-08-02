@@ -3,6 +3,7 @@ extends ProjectileHandler
 
 var target_position : Vector2
 @export var cool_down_time : float = 1
+@export var player : Player
 var cooling_down : bool = false
 
 
@@ -15,7 +16,7 @@ func set_up_projectile() -> Projectile:
 	new_projectile.global_position = get_fire_position()
 	new_projectile.direction = projectile_direction
 	new_projectile.rotation = new_projectile.direction.angle()
-	new_projectile.wielder = get_parent()
+	new_projectile.wielder = player
 	return new_projectile
 	
 	
