@@ -1,6 +1,8 @@
 class_name Player
 extends CharacterBody2D
 
+signal died
+
 var level : CustomLevel
 
 var active : bool = true #moving or listening for input
@@ -175,12 +177,19 @@ func take_primary_action(_global_mouse_position : Vector2) -> void:
 	$StandardGun.projectile_direction = Vector2.UP	.rotated(rotation)
 	$StandardGun.fire()
 	
+	
+func set_camera_active(cam_active : bool) -> void:
+	$Camera2D.enabled = cam_active
+	
 
 func take_damage(dmg : float, _damage_type) -> void:
 	health -= dmg
 
 
 func die() -> void:
+	if current: 
+		Main.level.hud.alert_manager.add_alert("You have died", 5.0)
+	died.emit()
 	queue_free()
 	
 	
