@@ -203,6 +203,7 @@ texture_scale = 0.1
 position = Vector2(22, 233)
 rotation = -0.0290194
 
+
 [node name="LaserEmitter2" parent="lasers" instance=ExtResource("6_d0ccg")]
 position = Vector2(8, 424)
 rotation = -0.0290194

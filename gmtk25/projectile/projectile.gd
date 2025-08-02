@@ -52,7 +52,7 @@ func effect_body(body : Node2D) -> void:
 		extinguish()
 
 
-func _process(delta):
+func _physics_process(delta):
 	update_position(delta)
 	
 	

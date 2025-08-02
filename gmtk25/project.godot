@@ -75,6 +75,7 @@ resume_game={
 
 2d_physics/layer_1="Obstacles"
 2d_physics/layer_2="Players"
+2d_physics/layer_3="Obstacles transparent to Lasers"
 
 [physics]
 
