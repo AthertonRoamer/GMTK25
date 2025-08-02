@@ -202,10 +202,9 @@ func die() -> void:
 	var dummy = dummy_body_scene.instantiate()
 	dummy.position = position
 	dummy.rotation = rotation
-	Main.level.get_map().add_child(dummy)
+	Main.level.get_map().call_deferred("add_child", dummy)
 	
 	queue_free()
-
 
 func _exit_tree() -> void:
 	if current:
