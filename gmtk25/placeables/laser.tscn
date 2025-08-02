@@ -1,8 +1,10 @@
+
 [gd_scene load_steps=14 format=3 uid="uid://dj4avedo0ahia"]
 
 [ext_resource type="Script" uid="uid://bd0hyxp14xjd5" path="res://placeables/laser.gd" id="1_ukiwc"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_f5wbe"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="3_kj5fv"]
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oiaqo"]
 particles_animation = true

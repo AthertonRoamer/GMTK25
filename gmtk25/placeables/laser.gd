@@ -10,7 +10,9 @@ extends RayCast2D
 var dmg : float = 100
 
 
+
 var is_casting: bool = false :
+
 	set(value):
 		is_casting = value
 		
@@ -30,14 +32,6 @@ func _ready():
 	is_casting = true
 
 
-
-func blue():
-	$Line2D.default_color = Color(0.04,0.90,0.94)#enemy color
-	set_collision_mask_value(5,true)
-
-func red():
-	$Line2D.default_color = Color(1.00,0.01,0.27)#player color
-	set_collision_mask_value(4,true)
 
 func _physics_process(delta: float) -> void:
 	var cast_point := target_position

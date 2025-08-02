@@ -182,7 +182,9 @@ func set_camera_active(cam_active : bool) -> void:
 	$Camera2D.enabled = cam_active
 
 
+
 func take_damage(dmg : float, _damage_type: String = "default") -> void:
+
 	health -= dmg
 
 
