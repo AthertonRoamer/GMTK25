@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jx28hx4fcuuq"]
+[gd_scene load_steps=8 format=3 uid="uid://jx28hx4fcuuq"]
 
 [ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
 [ext_resource type="Script" uid="uid://7u0evfvj46nv" path="res://hud/loop_time_display.gd" id="2_2gk58"]
@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://uj6rsjxpgmub" path="res://hud/loop_end_menu.gd" id="3_318vg"]
 [ext_resource type="Script" uid="uid://c77px8pq2lx3g" path="res://hud/pause_menu.gd" id="5_svhta"]
 [ext_resource type="Script" uid="uid://c522wu55mbahm" path="res://hud/final_loop_display.gd" id="6_fjv1a"]
+[ext_resource type="Script" uid="uid://b1jbloyxxwhap" path="res://hud/hud_alert_system/alert_manager.gd" id="7_0ivg5"]
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" node_paths=PackedStringArray("alert_manager")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6ca3a")
+alert_manager = NodePath("AlertManager")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -122,6 +124,20 @@ grow_vertical = 2
 text = "Final Loop Ended"
 horizontal_alignment = 1
 script = ExtResource("6_fjv1a")
+
+[node name="AlertManager" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.491319
+anchor_top = 0.181296
+anchor_right = 0.491319
+anchor_bottom = 0.181296
+offset_left = -193.0
+offset_top = -75.48
+offset_right = 193.0
+offset_bottom = 93.52
+script = ExtResource("7_0ivg5")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="LoopEndMenu/VBoxContainer/Button" to="LoopEndMenu" method="_on_button_pressed"]
 [connection signal="pause_menu_open_changed" from="PauseMenu" to="LoopEndMenu" method="_on_pause_menu_pause_menu_open_changed"]

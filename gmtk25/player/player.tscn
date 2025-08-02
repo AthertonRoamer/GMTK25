@@ -11,9 +11,7 @@ radius = 13.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 2.23607
 
-
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_oul6g")
@@ -41,5 +39,10 @@ position_smoothing_enabled = true
 [node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(7, -33)
 script = ExtResource("3_yw30f")
+cool_down_time = 0.1
 projectile_scene = ExtResource("4_qjkh3")
 fire_position_node = NodePath(".")
+
+[node name="CoolDownTimer" type="Timer" parent="StandardGun"]
+
+[connection signal="timeout" from="StandardGun/CoolDownTimer" to="StandardGun" method="_on_cool_down_timer_timeout"]

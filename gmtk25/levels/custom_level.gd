@@ -15,6 +15,8 @@ extends Level
 @export var loop_manager : LoopManager 
 @export var hud_layer_scene : PackedScene = preload("res://hud/hud_layer.tscn")
 
+var hud : Hud
+
 
 func _ready() -> void:
 	if auto_load_children:
@@ -25,6 +27,7 @@ func _ready() -> void:
 		add_child(loop_manager)
 		var hud_layer = hud_layer_scene.instantiate()
 		add_child(hud_layer)
+		hud = hud_layer.get_child(0)
 	elif not loop_manager:
 		loop_manager = LoopManager.new()
 		add_child(loop_manager)
