@@ -1,4 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://jx28hx4fcuuq"]
+
+[gd_scene load_steps=10 format=3 uid="uid://jx28hx4fcuuq"]
+
 
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_1kkc0"]
 [ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
@@ -8,6 +10,8 @@
 [ext_resource type="Script" uid="uid://c77px8pq2lx3g" path="res://hud/pause_menu.gd" id="5_svhta"]
 [ext_resource type="Script" uid="uid://c522wu55mbahm" path="res://hud/final_loop_display.gd" id="6_fjv1a"]
 [ext_resource type="Script" uid="uid://b1jbloyxxwhap" path="res://hud/hud_alert_system/alert_manager.gd" id="7_0ivg5"]
+[ext_resource type="Script" uid="uid://xqujk8t6gakq" path="res://hud/post_death_pause_phase_alert.gd" id="8_1kkc0"]
+[ext_resource type="Script" uid="uid://bqh2rtncb2y6c" path="res://hud/victory_display.gd" id="9_qv4qp"]
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("alert_manager")]
 layout_mode = 3
@@ -153,7 +157,73 @@ offset_bottom = 93.52
 script = ExtResource("7_0ivg5")
 metadata/_edit_use_anchors_ = true
 
+[node name="PostDeathPausePhaseAlert" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.282
+anchor_right = 0.5
+anchor_bottom = 0.282
+offset_left = -191.0
+offset_top = -48.736
+offset_right = 186.0
+offset_bottom = 41.264
+script = ExtResource("8_1kkc0")
+metadata/_edit_group_ = true
+
+[node name="GamePausedAlert" type="Label" parent="PostDeathPausePhaseAlert"]
+layout_mode = 2
+text = "Game Paused
+Space to resume"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="PostDeathPausePhaseAlert"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ChangePlayerAlert" type="Label" parent="PostDeathPausePhaseAlert"]
+layout_mode = 2
+text = "Click to switch between views of your past selves"
+
+[node name="Timer" type="Timer" parent="PostDeathPausePhaseAlert"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="VictoryDisplay" type="VBoxContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = -20.0
+offset_right = 134.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_qv4qp")
+
+[node name="Label" type="Label" parent="VictoryDisplay"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Level Completed!"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VictoryDisplay"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VictoryDisplay"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Continue"
+
 [connection signal="pressed" from="LoopEndMenu/VBoxContainer/Button" to="LoopEndMenu" method="_on_button_pressed"]
 [connection signal="pause_menu_open_changed" from="PauseMenu" to="LoopEndMenu" method="_on_pause_menu_pause_menu_open_changed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="PauseMenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/Quit to Menu" to="PauseMenu" method="_on_quit_to_menu_pressed"]
+[connection signal="timeout" from="PostDeathPausePhaseAlert/Timer" to="PostDeathPausePhaseAlert" method="_on_timer_timeout"]
+[connection signal="pressed" from="VictoryDisplay/Button" to="VictoryDisplay" method="_on_button_pressed"]

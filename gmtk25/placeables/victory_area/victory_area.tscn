@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://7ns33kcx0gu3"]
+
+[ext_resource type="Script" uid="uid://b0e3bs2ko6jrm" path="res://placeables/victory_area/victory_area.gd" id="1_w3k8p"]
+[ext_resource type="PackedScene" uid="uid://dy00avuhk3pkf" path="res://levels/maps/test/wall.tscn" id="2_qcpg1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qcpg1"]
+size = Vector2(95, 58)
+
+[node name="VictoryArea" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_w3k8p")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = 1
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-69, -54, 66, -52, 65, 84, -69, 83)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_qcpg1")
+
+[node name="Wall" parent="." instance=ExtResource("2_qcpg1")]
+position = Vector2(-49, 16)
+
+[node name="Wall2" parent="." instance=ExtResource("2_qcpg1")]
+position = Vector2(51, 16)
+
+[node name="Wall3" parent="." instance=ExtResource("2_qcpg1")]
+position = Vector2(0, -39)
+rotation = 1.57115
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

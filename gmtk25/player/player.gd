@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-signal died
+signal died(dummy : PlayerDummy)
 
 var level : CustomLevel
 
@@ -68,9 +68,9 @@ func _ready() -> void:
 	if current:
 		input_record = InputRecord.new()
 		input_record.loop_index = Main.level.loop_manager.current_loop
-		$Camera2D.enabled = true
+		$StandardCamera.enabled = true
 	else:
-		$Camera2D.enabled = false
+		$StandardCamera.enabled = false
 		modulate = Color(Color.WHITE, 0.5)
 	
 	
@@ -184,7 +184,7 @@ func take_primary_action(_global_mouse_position : Vector2) -> void:
 	
 	
 func set_camera_active(cam_active : bool) -> void:
-	$Camera2D.enabled = cam_active
+	$StandardCamera.enabled = cam_active
 
 
 
@@ -194,15 +194,14 @@ func take_damage(dmg : float, _damage_type: String = "default") -> void:
 
 
 func die() -> void:
-	if current: 
-		Main.level.hud.alert_manager.add_alert("You have died", 5.0)
+	#if current: 
+		#Main.level.hud.alert_manager.add_alert("You have died", 5.0)
 	dying = true
-	died.emit()
-	
-	var dummy = dummy_body_scene.instantiate()
+	var dummy : PlayerDummy = dummy_body_scene.instantiate()
 	dummy.position = position
 	dummy.rotation = rotation
 	Main.level.get_map().call_deferred("add_child", dummy)
+	died.emit(dummy)
 	
 	queue_free()
 
