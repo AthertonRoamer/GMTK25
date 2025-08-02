@@ -23,7 +23,11 @@ var walk_direction : Vector2 = Vector2.ZERO
 @export_group("Friction")
 @export var current_slow_down_time : float = .1
 @export var set_current_friction_from_slow_down_time : bool = true
+
+var dummy_body_scene : PackedScene = preload("res://dummies/player_dummy.tscn")
+
 var dying : bool = false
+
 
 
 var current_friction : float = 2500
@@ -194,6 +198,12 @@ func die() -> void:
 		Main.level.hud.alert_manager.add_alert("You have died", 5.0)
 	dying = true
 	died.emit()
+	
+	var dummy = dummy_body_scene.instantiate()
+	dummy.position = position
+	dummy.rotation = rotation
+	Main.level.get_map().add_child(dummy)
+	
 	queue_free()
 
 

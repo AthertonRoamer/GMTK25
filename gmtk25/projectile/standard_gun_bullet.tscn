@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://jnajxsxwxoer"]
+[gd_scene load_steps=18 format=3 uid="uid://jnajxsxwxoer"]
 
 [ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_2w5qf"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_4ccqb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
-height = 50.0
+height = 74.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g0ebo"]
 particles_animation = true
@@ -102,8 +102,6 @@ particles_anim_h_frames = 8
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nalc4"]
-
 [sub_resource type="Gradient" id="Gradient_qq4gb"]
 colors = PackedColorArray(1, 1, 1, 1, 0.321728, 0.321728, 0.321728, 1)
 
@@ -147,7 +145,7 @@ hframes = 8
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(8, -1)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_daedc")
 
@@ -183,7 +181,7 @@ position = Vector2(21, 0)
 scale = Vector2(0.5, 0.295)
 emitting = false
 amount = 24
-texture = SubResource("CompressedTexture2D_nalc4")
+texture = ExtResource("2_4ccqb")
 one_shot = true
 speed_scale = 4.0
 explosiveness = 0.75
