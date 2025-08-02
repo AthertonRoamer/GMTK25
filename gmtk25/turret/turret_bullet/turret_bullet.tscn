@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://cwn5kuvawj3h"]
 
-[ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_we85h"]
-[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://projectile/Projectiles.png" id="2_g1d77"]
+[ext_resource type="Script" uid="uid://55tmbj0cy4x0" path="res://turret/turret_bullet/turret_bullet.gd" id="1_jjki3"]
+[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_g1d77"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
@@ -127,17 +127,16 @@ damping_max = 100.0
 scale_curve = SubResource("CurveTexture_ioued")
 color_ramp = SubResource("GradientTexture1D_ov85m")
 
-[node name="smg_bullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
+[node name="TurretBullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_we85h")
-speed = 1600.0
-damage = 2
+script = ExtResource("1_jjki3")
+speed = 300.0
+damage = 20
 extinguish_on_impact = true
 extinguish_on_effect_body = true
 duration_timer = NodePath("lifespan")
 duration = 10.0
-impact_knockback = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

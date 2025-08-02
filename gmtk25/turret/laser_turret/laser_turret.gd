@@ -1,4 +1,4 @@
-class_name LaserTurret
+class_name Turret
 extends StaticBody2D
 
 @export var sight_range : float = 500
@@ -12,8 +12,8 @@ var current_direction = Vector2.RIGHT
 
 @export var rotation_speed = 180
 
-@export var max_health : int = 400
-@export var starting_health : int = 400
+@export var max_health : int = 10
+@export var starting_health : int = 10
 @export var range_circle_color : Color = Color(Color.DARK_RED, 0.3)
 
 var health : float:
