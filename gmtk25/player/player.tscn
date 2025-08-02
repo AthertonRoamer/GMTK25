@@ -32,6 +32,7 @@ visible = false
 position = Vector2(7, -32)
 shape = SubResource("CircleShape2D_rkbax")
 
+
 [node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(7, -33)
 script = ExtResource("3_yw30f")

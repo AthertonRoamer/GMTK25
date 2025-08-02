@@ -12,7 +12,7 @@
 background_mode = 3
 glow_enabled = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n36j1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bng35"]
 texture = ExtResource("2_kwgks")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
@@ -51,7 +51,7 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_18uf0"]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_n36j1")
+sources/0 = SubResource("TileSetAtlasSource_bng35")
 
 [node name="TestMap1" type="Node2D" node_paths=PackedStringArray("spawn_point")]
 script = ExtResource("1_18uf0")
@@ -196,13 +196,15 @@ energy = 3.0
 texture = ExtResource("3_18uf0")
 texture_scale = 0.1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_g0t7c")
-
 [node name="lasers" type="Node2D" parent="."]
 
 [node name="LaserTurret" parent="." instance=ExtResource("6_bng35")]
 position = Vector2(116, 374)
 
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g0t7c")
+
 [node name="VictoryArea" parent="." instance=ExtResource("7_d0ccg")]
 position = Vector2(416, -87)
+
