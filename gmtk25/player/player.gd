@@ -176,7 +176,7 @@ func take_primary_action(_global_mouse_position : Vector2) -> void:
 	$StandardGun.fire()
 	
 
-func take_damage(dmg : float, _damage_type) -> void:
+func take_damage(dmg : float, _damage_type : String = "default") -> void:
 	health -= dmg
 
 
