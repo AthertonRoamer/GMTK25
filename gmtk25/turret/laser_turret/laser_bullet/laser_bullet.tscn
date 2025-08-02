@@ -129,7 +129,7 @@ color_ramp = SubResource("GradientTexture1D_ov85m")
 
 [node name="LaserBullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
 collision_layer = 0
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_ulijw")
 speed = 1600.0
 damage = 100

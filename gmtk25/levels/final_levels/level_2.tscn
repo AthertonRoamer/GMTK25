@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvn445lca8afs"]
+
+[ext_resource type="Script" uid="uid://d4d7ias1c0sxg" path="res://levels/final_levels/level_1.gd" id="1_hxfcy"]
+[ext_resource type="PackedScene" uid="uid://ba103jdgufusi" path="res://levels/final_levels/final_maps/map_2.tscn" id="2_hxfcy"]
+
+[node name="TestLevel1" type="Node2D"]
+script = ExtResource("1_hxfcy")
+loop_time = 35.0
+map_scene = ExtResource("2_hxfcy")

@@ -5,5 +5,5 @@
 
 [node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_psydd")
-loop_time = 10.0
+loop_time = 35.0
 map_scene = ExtResource("2_d1s8c")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://150gcrgpxiu4"]
+[gd_scene load_steps=11 format=4 uid="uid://150gcrgpxiu4"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_0q438"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_vx0yd"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="4_nbnlt"]
 [ext_resource type="PackedScene" uid="uid://bg4xyghehcp7w" path="res://placeables/shadow.tscn" id="5_4ul2f"]
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="5_c3jmf"]
-[ext_resource type="PackedScene" uid="uid://8ryhok2vhlcp" path="res://turret/laser_turret/laser_turret.tscn" id="6_jy4ab"]
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="8_nbnlt"]
 
 [sub_resource type="Environment" id="Environment_tb4ed"]
@@ -83,7 +82,7 @@ position = Vector2(79, 159)
 rotation = 1.51343
 
 [node name="button" parent="buttons" instance=ExtResource("3_4ul2f")]
-position = Vector2(183.748, -967.056)
+position = Vector2(120.967, -972.664)
 rotation = 0.253073
 activation_mode = "Toggle"
 target_scene = NodePath("../../gates/gate1")
@@ -103,8 +102,8 @@ rotation = 1.51343
 
 [node name="wires" type="Sprite2D" parent="wires"]
 texture_filter = 1
-position = Vector2(211.038, -936.441)
-rotation = -0.0355146
+position = Vector2(198.221, -905.124)
+rotation = -0.944712
 texture = ExtResource("2_vx0yd")
 hframes = 8
 vframes = 3
@@ -131,7 +130,7 @@ frame = 19
 
 [node name="wires4" type="Sprite2D" parent="wires"]
 texture_filter = 1
-position = Vector2(211.729, -861.277)
+position = Vector2(202.997, -848.757)
 rotation = 2.26324
 scale = Vector2(1.08494, 1.3962)
 texture = ExtResource("2_vx0yd")
@@ -184,6 +183,52 @@ hframes = 8
 vframes = 3
 frame = 19
 
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 482.0
+offset_top = 291.0
+offset_right = 609.0
+offset_bottom = 416.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "These are hold buttons. Use the timeloop to click both at once."
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 1186.0
+offset_top = 186.0
+offset_right = 1291.0
+offset_bottom = 271.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "Walk over the button to activate the gate."
+autowrap_mode = 3
+
+[node name="Label3" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 1240.0
+offset_top = 362.0
+offset_right = 1345.0
+offset_bottom = 447.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "Time loops 3 times this level. "
+autowrap_mode = 3
+
+[node name="Label4" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 910.0
+offset_top = 402.0
+offset_right = 1015.0
+offset_bottom = 487.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "To skip to the next loop, hit 'L'."
+autowrap_mode = 3
+
 [node name="gates" type="Node2D" parent="."]
 
 [node name="wires5" type="Sprite2D" parent="gates"]
@@ -201,17 +246,17 @@ position = Vector2(896, 287)
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
 
-[node name="shadow" parent="gates" instance=ExtResource("5_4ul2f")]
-visible = false
-offset_left = 570.0
-offset_top = 108.0
-offset_right = 896.0
-offset_bottom = 669.0
-
 [node name="gate2" parent="gates" instance=ExtResource("4_nbnlt")]
 position = Vector2(736, 511)
 scale = Vector2(1.5, 1.5)
 required_activations = 2
+
+[node name="shadow" parent="gates" instance=ExtResource("5_4ul2f")]
+visible = false
+offset_left = 414.0
+offset_top = 108.0
+offset_right = 896.0
+offset_bottom = 669.0
 
 [node name="lights" type="Node2D" parent="."]
 
@@ -272,48 +317,46 @@ energy = 3.0
 texture = ExtResource("5_c3jmf")
 texture_scale = 0.1
 
-[node name="lasers" type="Node2D" parent="."]
+[node name="light4" type="Sprite2D" parent="lights"]
+texture_filter = 1
+position = Vector2(583, 178)
+rotation = 6.27201
+scale = Vector2(2, 2)
+texture = ExtResource("2_vx0yd")
+hframes = 8
+vframes = 3
+frame = 16
 
-[node name="LaserTurret" parent="." instance=ExtResource("6_jy4ab")]
-position = Vector2(116, 374)
+[node name="PointLight2D" type="PointLight2D" parent="lights/light4"]
+position = Vector2(-1.0987, -0.0778604)
+rotation = -1.57008
+scale = Vector2(6.12913, 3.55555)
+color = Color(1, 0, 0, 1)
+energy = 3.0
+texture = ExtResource("5_c3jmf")
+texture_scale = 0.1
+
+[node name="light5" type="Sprite2D" parent="lights"]
+texture_filter = 1
+position = Vector2(886, 449)
+rotation = 6.27201
+scale = Vector2(2, 2)
+texture = ExtResource("2_vx0yd")
+hframes = 8
+vframes = 3
+frame = 16
+
+[node name="PointLight2D" type="PointLight2D" parent="lights/light5"]
+position = Vector2(-1.0987, -0.0778604)
+rotation = -1.57008
+scale = Vector2(6.12913, 3.55555)
+color = Color(1, 0, 0, 1)
+energy = 3.0
+texture = ExtResource("5_c3jmf")
+texture_scale = 0.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tb4ed")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.783523, 0.783523, 0.783523, 1)
-
-[node name="tutorial" type="Node2D" parent="."]
-
-[node name="Label" type="Label" parent="tutorial"]
-texture_filter = 1
-offset_left = 473.0
-offset_top = 274.0
-offset_right = 600.0
-offset_bottom = 399.0
-theme = ExtResource("8_nbnlt")
-theme_override_font_sizes/font_size = 13
-text = "These are hold buttons. Use the timeloop to click both at once."
-autowrap_mode = 3
-
-[node name="Label2" type="Label" parent="tutorial"]
-texture_filter = 1
-offset_left = 1195.0
-offset_top = 188.0
-offset_right = 1300.0
-offset_bottom = 273.0
-theme = ExtResource("8_nbnlt")
-theme_override_font_sizes/font_size = 13
-text = "Walk over the button to activate the gate."
-autowrap_mode = 3
-
-[node name="Label3" type="Label" parent="tutorial"]
-texture_filter = 1
-offset_left = 1160.0
-offset_top = 446.0
-offset_right = 1265.0
-offset_bottom = 531.0
-theme = ExtResource("8_nbnlt")
-theme_override_font_sizes/font_size = 13
-text = "Time loops 2 times this level. "
-autowrap_mode = 3
