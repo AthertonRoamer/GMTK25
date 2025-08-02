@@ -8,4 +8,4 @@ func _ready() -> void:
 	
 	
 func _process(_delta: float) -> void:
-	text = str(round(loop_manager.current_loop_time * 100) / 100)
+	text = " " + str(round(loop_manager.current_loop_time * 100) / 100) + " "

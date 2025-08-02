@@ -10,4 +10,4 @@ func _ready() -> void:
 	
 func _on_loop_began() -> void:
 	visible = true
-	text = "Loop " + str(loop_manager.current_loop)
+	text = " Loop " + str(loop_manager.current_loop) + " "

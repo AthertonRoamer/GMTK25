@@ -17,9 +17,12 @@ extends Level
 
 var hud : Hud
 
+signal level_beaten
+
 
 func _ready() -> void:
 	if auto_load_children:
+		
 		loop_manager = LoopManager.new()
 		loop_manager.loop_time = loop_time
 		loop_manager.loops_allowed = loops_allowed
@@ -40,4 +43,14 @@ func get_map() -> Map:
 		return loop_manager.map
 	else:
 		return null
+		
+		
+func trigger_victory() -> void:
+	level_beaten.emit()
+	get_tree().paused = true
+	
+	
+func _exit_tree() -> void:
+	if get_tree().paused:
+		get_tree().paused = false
 	
