@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://ufbqm466ood"]
+
+[ext_resource type="Script" uid="uid://y5n6j3comhaf" path="res://placeables/laser.gd" id="1_ukiwc"]
+[ext_resource type="Texture2D" uid="uid://d228efann4jhf" path="res://assets/Projectiles.png" id="2_f5wbe"]
+[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://projectile/Projectiles.png" id="3_kj5fv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_oiaqo"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ub4bo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.46, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wfe05"]
+curve = SubResource("Curve_ub4bo")
+
+[sub_resource type="Curve" id="Curve_p332f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_kdr10"]
+curve = SubResource("Curve_p332f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6p8fh"]
+particle_flag_disable_z = true
+initial_velocity_min = 209.68
+initial_velocity_max = 209.68
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kdr10")
+alpha_curve = SubResource("CurveTexture_wfe05")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_flk2t"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e8clp"]
+particle_flag_disable_z = true
+initial_velocity_min = 209.68
+initial_velocity_max = 209.68
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kdr10")
+alpha_curve = SubResource("CurveTexture_wfe05")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_svrvs"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8n6jn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 209.68
+initial_velocity_max = 209.68
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_kdr10")
+alpha_curve = SubResource("CurveTexture_wfe05")
+
+[node name="laser" type="RayCast2D"]
+target_position = Vector2(2000, 0)
+collision_mask = 3
+script = ExtResource("1_ukiwc")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(100, 0, 0, 0)
+default_color = Color(1, 0.0196078, 0.27451, 1)
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_oiaqo")
+amount = 32
+texture = ExtResource("2_f5wbe")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_6p8fh")
+
+[node name="CollisionParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_flk2t")
+amount = 32
+texture = ExtResource("2_f5wbe")
+lifetime = 0.3
+process_material = SubResource("ParticleProcessMaterial_e8clp")
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_svrvs")
+amount = 32
+texture = ExtResource("3_kj5fv")
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_8n6jn")
