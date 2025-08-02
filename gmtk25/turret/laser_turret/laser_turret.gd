@@ -53,8 +53,6 @@ func shoot():
 	pass
 
 func rotate_to_target(ntarget, delta):
-	if position.distance_to(ntarget.position) > sight_range:
-		return
 	var dir = global_position.direction_to(ntarget.global_position)
 	rotate_toward_direction(dir,delta)
 	global_rotation = current_direction.angle()
@@ -63,6 +61,8 @@ func rotate_to_target(ntarget, delta):
 func assess_targets() -> void:
 	if not turret_area.get_visible_enemies().is_empty():
 		target = get_closest_enemy(turret_area.get_visible_enemies())
+	else:
+		target = null
 		
 		
 func get_closest_enemy(enemies : Array) -> Node2D:
