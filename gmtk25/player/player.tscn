@@ -2,10 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dyq28pqep14p8" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://d0vyncuy087pt" path="res://assets/player_ss.png" id="2_rkbax"]
-
 [ext_resource type="Script" uid="uid://bgavaplceo5ej" path="res://player/standard_gun.gd" id="3_yw30f"]
 [ext_resource type="PackedScene" uid="uid://jnajxsxwxoer" path="res://projectile/standard_gun_bullet.tscn" id="4_qjkh3"]
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
 radius = 13.0
