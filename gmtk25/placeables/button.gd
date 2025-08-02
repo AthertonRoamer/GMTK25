@@ -2,7 +2,7 @@ extends Area2D
 
 @export_enum("Toggle", "Hold") var activation_mode : String = "Hold"
 @export var target_scene : NodePath
-
+@export var target_scene2 : NodePath
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var _is_active: bool = false
@@ -36,6 +36,12 @@ func _on_body_exited(body: Node):
 func activate():
 	if !player_on_button:
 		animation_player.play("glow")
-		var target = get_node(target_scene)
+
+		var target = get_node_or_null(target_scene)
 		if target and target.has_method("activate"):
 			target.activate(_is_active)
+
+		if target_scene2 != NodePath("") and has_node(target_scene2):
+			var target2 = get_node_or_null(target_scene2)
+			if target2 and target2.has_method("activate"):
+				target2.activate(_is_active)
