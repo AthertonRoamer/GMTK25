@@ -1,8 +1,13 @@
+
 [gd_scene load_steps=11 format=4 uid="uid://150gcrgpxiu4"]
+
+[gd_scene load_steps=13 format=4 uid="uid://150gcrgpxiu4"]
+
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_0q438"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_vx0yd"]
 [ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_4ul2f"]
+[ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_c3jmf"]
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="4_nbnlt"]
 [ext_resource type="PackedScene" uid="uid://bg4xyghehcp7w" path="res://placeables/shadow.tscn" id="5_4ul2f"]
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="5_c3jmf"]
@@ -76,6 +81,10 @@ tile_set = SubResource("TileSet_l0re0")
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
 position = Vector2(1115, 604)
+
+[node name="VictoryArea" parent="map" instance=ExtResource("3_c3jmf")]
+position = Vector2(738, 607)
+rotation = 3.14159
 
 [node name="buttons" type="Node2D" parent="."]
 position = Vector2(79, 159)
@@ -252,8 +261,10 @@ scale = Vector2(1.5, 1.5)
 required_activations = 2
 
 [node name="shadow" parent="gates" instance=ExtResource("5_4ul2f")]
+
 visible = false
 offset_left = 414.0
+
 offset_top = 108.0
 offset_right = 896.0
 offset_bottom = 669.0

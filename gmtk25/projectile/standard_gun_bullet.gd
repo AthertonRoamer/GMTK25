@@ -31,9 +31,12 @@ func update_position(delta: float) -> void:
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	queue_free()
 
-func effect_body(body: Node2D) -> void:
-	var extinguish_triggered: bool = false
-	if body.is_in_group("damageable"):
+	
+	
+func effect_body(body : Node2D) -> void:
+	var extinguish_triggered : bool = false
+	if body.is_in_group("damageable") and body != wielder:
+
 		body.take_damage(damage, damage_type)
 		hit_entities.append(body)
 		extinguish_triggered = true

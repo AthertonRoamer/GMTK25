@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://blybn2ovwj2k2"]
 
-[ext_resource type="Script" uid="uid://b73woxfv6hrec" path="res://placeables/laser_emitter.gd" id="1_dlu6n"]
+[ext_resource type="Script" path="res://placeables/laser_emitter.gd" id="1_dlu6n"]
 [ext_resource type="Texture2D" uid="uid://c8eqc5hexfgia" path="res://assets/turrets_ss.png" id="1_wvi01"]
 [ext_resource type="PackedScene" uid="uid://dj4avedo0ahia" path="res://placeables/laser.tscn" id="2_nsnrt"]
 

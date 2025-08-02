@@ -28,7 +28,7 @@ func _ready() -> void:
 	for body in get_overlapping_bodies():
 		if not hit_entities.has(body) and body != wielder:
 			effect_body(body)
-		if extinguish_on_impact:
+		if extinguish_on_impact  and body != wielder:
 			extinguish()
 	
 	

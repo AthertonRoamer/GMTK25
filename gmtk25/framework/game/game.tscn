@@ -5,7 +5,11 @@
 [ext_resource type="Script" uid="uid://d3p0l0b5841ro" path="res://framework/game/game_level_manager.gd" id="2_erbt7"]
 [ext_resource type="Script" uid="uid://tidjdpqv0mrg" path="res://framework/game/level_system/level/level_data.gd" id="3_edldn"]
 [ext_resource type="PackedScene" uid="uid://bo7ahqq7i826s" path="res://levels/final_levels/level_1.tscn" id="5_1qalo"]
+
 [ext_resource type="PackedScene" uid="uid://bvn445lca8afs" path="res://levels/final_levels/level_2.tscn" id="5_h6l0g"]
+
+[ext_resource type="PackedScene" uid="uid://bq262l1or6oyu" path="res://levels/test/test_level_1.tscn" id="5_h6l0g"]
+
 
 [sub_resource type="Resource" id="Resource_1qalo"]
 script = ExtResource("3_edldn")
