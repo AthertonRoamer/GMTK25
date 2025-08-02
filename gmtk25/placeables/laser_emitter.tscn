@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ehah6xu3mi7"]
+
+[gd_scene load_steps=4 format=3 uid="uid://blybn2ovwj2k2"]
 
 [ext_resource type="Texture2D" uid="uid://c8eqc5hexfgia" path="res://assets/turrets_ss.png" id="1_wvi01"]
-[ext_resource type="PackedScene" uid="uid://ufbqm466ood" path="res://placeables/laser.tscn" id="2_nsnrt"]
+[ext_resource type="PackedScene" uid="uid://dj4avedo0ahia" path="res://placeables/laser.tscn" id="2_nsnrt"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dlu6n"]
 size = Vector2(9, 13)

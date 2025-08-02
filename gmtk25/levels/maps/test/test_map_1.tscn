@@ -5,11 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="3_18uf0"]
 [ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_g0t7c"]
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="4_kwgks"]
-[ext_resource type="PackedScene" uid="uid://d1ehah6xu3mi7" path="res://placeables/laser_emitter.tscn" id="6_bng35"]
+
+[ext_resource type="PackedScene" uid="uid://blybn2ovwj2k2" path="res://placeables/laser_emitter.tscn" id="6_bng35"]
+
+
 
 [sub_resource type="Environment" id="Environment_g0t7c"]
 background_mode = 3
 glow_enabled = true
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n36j1"]
 texture = ExtResource("2_kwgks")
@@ -187,7 +191,12 @@ energy = 3.0
 texture = ExtResource("3_18uf0")
 texture_scale = 0.1
 
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_g0t7c")
+
 [node name="lasers" type="Node2D" parent="."]
 
 [node name="LaserEmitter" parent="lasers" instance=ExtResource("6_bng35")]
-position = Vector2(14, 238)
+position = Vector2(34, 432)
+

@@ -10,7 +10,9 @@ extends RayCast2D
 var dmg : float = 100
 
 
-var is_casting: bool = true :
+
+var is_casting: bool = false :
+
 	set(value):
 		is_casting = value
 		
@@ -28,6 +30,7 @@ var is_casting: bool = true :
 
 func _ready():
 	is_casting = true
+
 
 
 func _physics_process(delta: float) -> void:
