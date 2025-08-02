@@ -2,7 +2,8 @@ class_name Map
 extends Node2D
 
 @export var spawn_point : Node2D
-@export var camera : Camera2D
+var camera : Camera2D
+var camera_scene : PackedScene = preload("res://camera/standard_camera.tscn")
 var players : Array = []
 var active : bool = false
 var camera_manager : CameraManager
@@ -25,6 +26,9 @@ func is_player_alive(p) -> bool:
 func _ready() -> void:
 	camera_manager = CameraManager.new()
 	add_child(camera_manager)
+	camera = camera_scene.instantiate()
+	camera.enabled = false
+	add_child(camera)
 	
 	
 func set_camera_active(a : bool) -> void:

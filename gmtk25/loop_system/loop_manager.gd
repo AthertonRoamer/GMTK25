@@ -114,3 +114,5 @@ func submit_input_record(record : InputRecord) -> void:
 			#print("unneccesary - record index: ", record.loop_index,  " most recent index: ", player_input_records[-1].loop_index)
 		#push_warning("Input record submitted with index: ", record.loop_index, " Records: ", player_input_records)
 		pass
+		
+		

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bql7743e7e2in"]
+[gd_scene load_steps=8 format=3 uid="uid://bql7743e7e2in"]
 
 [ext_resource type="Script" uid="uid://dyq28pqep14p8" path="res://player/player.gd" id="1_oul6g"]
 [ext_resource type="Texture2D" uid="uid://d0vyncuy087pt" path="res://assets/player_ss.png" id="2_rkbax"]
 [ext_resource type="Script" uid="uid://bgavaplceo5ej" path="res://player/standard_gun.gd" id="3_yw30f"]
 [ext_resource type="PackedScene" uid="uid://jnajxsxwxoer" path="res://projectile/standard_gun_bullet.tscn" id="4_qjkh3"]
+[ext_resource type="PackedScene" uid="uid://dvtjua2cioclf" path="res://camera/standard_camera.tscn" id="5_qjkh3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g1dw6"]
 radius = 13.0
@@ -31,11 +32,6 @@ visible = false
 position = Vector2(7, -32)
 shape = SubResource("CircleShape2D_rkbax")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
 [node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(7, -33)
 script = ExtResource("3_yw30f")
@@ -44,5 +40,7 @@ projectile_scene = ExtResource("4_qjkh3")
 fire_position_node = NodePath(".")
 
 [node name="CoolDownTimer" type="Timer" parent="StandardGun"]
+
+[node name="StandardCamera" parent="." instance=ExtResource("5_qjkh3")]
 
 [connection signal="timeout" from="StandardGun/CoolDownTimer" to="StandardGun" method="_on_cool_down_timer_timeout"]
