@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://defjcqdh5khgq"]
+[gd_scene load_steps=9 format=4 uid="uid://defjcqdh5khgq"]
 
 [ext_resource type="Script" uid="uid://cbddoc06qeokt" path="res://levels/maps/test/test_map_1.gd" id="1_18uf0"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_kwgks"]
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="3_18uf0"]
+[ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_g0t7c"]
+[ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="4_kwgks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n36j1"]
 texture = ExtResource("2_kwgks")
@@ -72,19 +74,16 @@ tile_set = SubResource("TileSet_18uf0")
 position = Vector2(79, 159)
 rotation = 1.51343
 
-[node name="wires4" type="Sprite2D" parent="buttons"]
-texture_filter = 1
-position = Vector2(28.1696, -54.4745)
-texture = ExtResource("2_kwgks")
-hframes = 8
-vframes = 3
-frame = 9
+[node name="button" parent="buttons" instance=ExtResource("3_g0t7c")]
+position = Vector2(-49.7021, -58.9466)
+target_scene = NodePath("../../gates/gate1")
 
 [node name="wires" type="Node2D" parent="."]
-position = Vector2(79, 159)
+position = Vector2(79, 84)
 rotation = 1.51343
 
 [node name="wires" type="Sprite2D" parent="wires"]
+visible = false
 texture_filter = 1
 position = Vector2(-124.919, 29.887)
 rotation = -1.67154
@@ -95,8 +94,8 @@ frame = 19
 
 [node name="wires2" type="Sprite2D" parent="wires"]
 texture_filter = 1
-position = Vector2(-55.4355, 40.8889)
-rotation = -2.3805
+position = Vector2(-51.6615, 10.0545)
+rotation = -1.49918
 texture = ExtResource("2_kwgks")
 hframes = 8
 vframes = 3
@@ -111,14 +110,6 @@ frame = 19
 
 [node name="gates" type="Node2D" parent="."]
 
-[node name="wires4" type="Sprite2D" parent="gates"]
-texture_filter = 1
-position = Vector2(96, 0)
-texture = ExtResource("2_kwgks")
-hframes = 8
-vframes = 3
-frame = 13
-
 [node name="wires5" type="Sprite2D" parent="gates"]
 texture_filter = 1
 position = Vector2(640, 287)
@@ -127,6 +118,9 @@ texture = ExtResource("2_kwgks")
 hframes = 8
 vframes = 3
 frame = 13
+
+[node name="gate1" parent="gates" instance=ExtResource("4_kwgks")]
+position = Vector2(96, 0)
 
 [node name="lights" type="Node2D" parent="."]
 
