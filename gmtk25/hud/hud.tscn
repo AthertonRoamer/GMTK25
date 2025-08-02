@@ -1,7 +1,5 @@
 [gd_scene load_steps=11 format=3 uid="uid://jx28hx4fcuuq"]
 
-[gd_scene load_steps=12 format=3 uid="uid://jx28hx4fcuuq"]
-
 
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_1kkc0"]
 [ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
