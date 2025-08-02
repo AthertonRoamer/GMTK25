@@ -7,7 +7,7 @@ extends RayCast2D
 @onready var beam_particle_2d: GPUParticles2D = $BeamParticles
 
 
-var dmg : float = 100
+var dmg : float = 1000
 
 
 

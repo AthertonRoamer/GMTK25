@@ -32,11 +32,11 @@ visible = false
 position = Vector2(7, -32)
 shape = SubResource("CircleShape2D_rkbax")
 
-
-[node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
+[node name="StandardGun" type="Node2D" parent="." node_paths=PackedStringArray("player", "fire_position_node")]
 position = Vector2(7, -33)
 script = ExtResource("3_yw30f")
 cool_down_time = 0.3
+player = NodePath("..")
 projectile_scene = ExtResource("4_qjkh3")
 fire_position_node = NodePath(".")
 

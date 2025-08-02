@@ -1,9 +1,13 @@
 extends Control
 
 
+@export var skip_loading_screen : bool = false
 var step = "mit"
 
 func _ready() -> void:
+	if skip_loading_screen:
+		print("Skipping loading screen")
+		Main.main.load_game()
 	loadin()
 
 func loadin():

@@ -13,10 +13,18 @@ func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	map = Main.level.get_map()
 	Main.level.loop_manager.loop_began.connect(_on_loop_began)
+	Main.level.loop_manager.current_player_changed_mid_loop.connect(_on_current_player_changed_mid_loop)
 	
 	
 func _on_loop_began() -> void:
-	Main.level.loop_manager.current_player.died.connect(_on_current_player_died)
+	if is_instance_valid(Main.level.loop_manager.current_player) and not Main.level.loop_manager.current_player.died.is_connected(_on_current_player_died):
+		Main.level.loop_manager.current_player.died.connect(_on_current_player_died)
+	
+	
+func _on_current_player_changed_mid_loop(old : Player, new : Player) -> void:
+	if is_instance_valid(old) and old.died.is_connected(_on_current_player_died):
+		old.died.disconnect(_on_current_player_died)
+	new.died.connect(_on_current_player_died) 
 	
 	
 func _on_current_player_died(dummy : PlayerDummy) -> void:
@@ -32,8 +40,7 @@ func _on_current_player_died(dummy : PlayerDummy) -> void:
 	
 	
 func _on_current_dummy_despawn() -> void:
-	map.clear_dead_players()
-	if map.players.is_empty():
+	if get_camera_suitable_players().is_empty():
 		Main.level.loop_manager.end_loop()
 	else:
 		open_post_death_pause_phase()
@@ -57,8 +64,7 @@ func close_post_death_pause_phase() -> void:
 	
 	
 func _on_camera_player_died(dummy : PlayerDummy) -> void:
-	map.clear_dead_players()
-	if map.players.is_empty():
+	if get_camera_suitable_players().is_empty():
 		dummy.dummy_release_camera.connect(_on_last_dummy_release_camera)
 		map.camera.position = dummy.position
 		map.camera.enabled = true
@@ -86,14 +92,13 @@ func toggle_camera() -> void:
 	
 	
 func activte_camera_by_index(index : int) -> void:
-	map.clear_dead_players()
-	if map.players.size() >= index + 1:
-		if set_camera_player(map.players[index]):
+	if get_camera_suitable_players().size() >= index + 1:
+		if set_camera_player(get_camera_suitable_players()[index]):
 			camera_index = index
 		else:
 			map.camera.enabled = true
-	elif not map.players.is_empty():
-		if set_camera_player(map.players[0]):
+	elif not get_camera_suitable_players().is_empty():
+		if set_camera_player(get_camera_suitable_players()[0]):
 			camera_index = 0
 	else:
 		map.camera.enabled = true
@@ -111,5 +116,14 @@ func set_camera_player(player : Player) -> bool:
 		return true
 	map.camera.enabled = true
 	return false
+	
+	
+func is_player_camera_suitable(p) -> bool:
+	return not p.awaiting_saved_run_completion
+	
+	
+func get_camera_suitable_players() -> Array:
+	map.clear_dead_players()
+	return map.players.filter(is_player_camera_suitable)
 		
 	

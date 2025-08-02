@@ -19,8 +19,11 @@ func clear_dead_players() -> void:
 	players = players.filter(is_player_alive)
 	
 	
-func is_player_alive(p) -> bool:
-	return is_instance_valid(p) and not p.dying 
+func is_player_alive(p ) -> bool:
+	return is_instance_valid(p) and not p.dying #and not p.awaiting_saved_run_completion
+	
+	
+
 	
 	
 func _ready() -> void:

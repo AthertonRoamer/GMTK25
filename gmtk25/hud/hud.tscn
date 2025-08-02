@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=10 format=3 uid="uid://jx28hx4fcuuq"]
-
+[gd_scene load_steps=12 format=3 uid="uid://jx28hx4fcuuq"]
 
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_1kkc0"]
 [ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
@@ -12,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b1jbloyxxwhap" path="res://hud/hud_alert_system/alert_manager.gd" id="7_0ivg5"]
 [ext_resource type="Script" uid="uid://xqujk8t6gakq" path="res://hud/post_death_pause_phase_alert.gd" id="8_1kkc0"]
 [ext_resource type="Script" uid="uid://bqh2rtncb2y6c" path="res://hud/victory_display.gd" id="9_qv4qp"]
+[ext_resource type="Script" uid="uid://budcqd4i4o614" path="res://hud/saved_run_display.gd" id="11_gms7k"]
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("alert_manager")]
 layout_mode = 3
@@ -27,11 +26,11 @@ alert_manager = NodePath("AlertManager")
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0815972
-anchor_top = 0.112654
-anchor_right = 0.176215
-anchor_bottom = 0.112654
-offset_right = 100.0
+anchor_left = 0.0182292
+anchor_top = 0.00771605
+anchor_right = 0.0182292
+anchor_bottom = 0.00771605
+offset_right = 345.0
 offset_bottom = 100.0
 metadata/_edit_use_anchors_ = true
 
@@ -47,6 +46,7 @@ custom_minimum_size = Vector2(5, 0)
 layout_mode = 2
 
 [node name="LoopTimeDisplay" type="Label" parent="HBoxContainer"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
@@ -89,7 +89,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="LoopEndMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Next Loop"
+text = "Space for Next Loop"
 flat = true
 
 [node name="PauseMenu" type="VBoxContainer" parent="."]
@@ -219,7 +219,42 @@ layout_mode = 2
 [node name="Button" type="Button" parent="VictoryDisplay"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Continue"
+text = "Space to Continue"
+
+[node name="SavedRunDisplay" type="VBoxContainer" parent="."]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -185.0
+offset_top = -58.0
+offset_right = 185.0
+offset_bottom = 137.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_gms7k")
+
+[node name="Label" type="Label" parent="SavedRunDisplay"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Your past self from loop 0 
+ has been saved from death 
+Go back and finish his run
+ -1 seconds remaining"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="SavedRunDisplay"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SavedRunDisplay"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Space to Continue"
 
 [connection signal="pressed" from="LoopEndMenu/VBoxContainer/Button" to="LoopEndMenu" method="_on_button_pressed"]
 [connection signal="pause_menu_open_changed" from="PauseMenu" to="LoopEndMenu" method="_on_pause_menu_pause_menu_open_changed"]
@@ -227,3 +262,4 @@ text = "Continue"
 [connection signal="pressed" from="PauseMenu/Quit to Menu" to="PauseMenu" method="_on_quit_to_menu_pressed"]
 [connection signal="timeout" from="PostDeathPausePhaseAlert/Timer" to="PostDeathPausePhaseAlert" method="_on_timer_timeout"]
 [connection signal="pressed" from="VictoryDisplay/Button" to="VictoryDisplay" method="_on_button_pressed"]
+[connection signal="pressed" from="SavedRunDisplay/Button" to="SavedRunDisplay" method="_on_button_pressed"]
