@@ -3,7 +3,7 @@ extends Node2D
 
 @export var spawn_point : Node2D
 @export var camera : Camera2D
-var players : Array[Player] = []
+var players : Array = []
 var active : bool = false
 var camera_manager : CameraManager
 
@@ -15,7 +15,11 @@ func set_players_active(p_active : bool) -> void:
 			
 			
 func clear_dead_players() -> void:
-	players = players.filter(is_instance_valid)
+	players = players.filter(is_player_alive)
+	
+	
+func is_player_alive(p) -> bool:
+	return is_instance_valid(p) and not p.dying 
 	
 	
 func _ready() -> void:

@@ -12,7 +12,7 @@ radius = 12.0416
 [sub_resource type="CircleShape2D" id="CircleShape2D_pak7c"]
 radius = 1.0
 
-[node name="Turret" type="CharacterBody2D"]
+[node name="Turret" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_p4ano")
 sight_range = 350.0
@@ -44,3 +44,6 @@ script = ExtResource("5_4h7n3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TurretArea"]
 shape = SubResource("CircleShape2D_pak7c")
+
+[node name="RayCast2D" type="RayCast2D" parent="TurretArea"]
+collision_mask = 3

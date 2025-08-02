@@ -23,13 +23,14 @@ var walk_direction : Vector2 = Vector2.ZERO
 @export_group("Friction")
 @export var current_slow_down_time : float = .1
 @export var set_current_friction_from_slow_down_time : bool = true
+var dying : bool = false
 
 
 var current_friction : float = 2500
 
 #endregion 
 
-var starting_health : float = 10
+var starting_health : float = 100
 var health = starting_health:
 	set(v):
 		if v <= 0:
@@ -191,6 +192,7 @@ func take_damage(dmg : float, _damage_type: String = "default") -> void:
 func die() -> void:
 	if current: 
 		Main.level.hud.alert_manager.add_alert("You have died", 5.0)
+	dying = true
 	died.emit()
 	queue_free()
 

@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://8ryhok2vhlcp"]
+
+[ext_resource type="Script" uid="uid://dbts3abqwtiwh" path="res://turret/laser_turret/laser_turret.gd" id="1_5pig0"]
+[ext_resource type="Texture2D" uid="uid://c8eqc5hexfgia" path="res://assets/turrets_ss.png" id="2_3vg28"]
+[ext_resource type="Script" uid="uid://s1qad5um0r3b" path="res://turret/turret_smg.gd" id="3_764gx"]
+[ext_resource type="PackedScene" uid="uid://c4sty4bcyhy07" path="res://turret/laser_turret/laser_bullet/laser_bullet.tscn" id="4_l83b7"]
+[ext_resource type="Script" uid="uid://b8kogv65gtuaw" path="res://turret/turret_area.gd" id="5_nh4x4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s81uv"]
+radius = 20.025
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pak7c"]
+radius = 1.0
+
+[node name="LaserTurret" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_5pig0")
+sight_range = 350.0
+rotation_speed = 270
+max_health = 400
+starting_health = 400
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_s81uv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_3vg28")
+hframes = 5
+frame = 1
+
+[node name="TurretArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("5_nh4x4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurretArea"]
+shape = SubResource("CircleShape2D_pak7c")
+
+[node name="RayCast2D" type="RayCast2D" parent="TurretArea"]
+collision_mask = 3
+
+[node name="gun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
+position = Vector2(59, 0)
+script = ExtResource("3_764gx")
+shot_interval = 0.5
+projectile_scene = ExtResource("4_l83b7")
+fire_position_node = NodePath(".")

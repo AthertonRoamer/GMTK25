@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://jnajxsxwxoer"]
+[gd_scene load_steps=19 format=3 uid="uid://c4sty4bcyhy07"]
 
-[ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_2w5qf"]
-[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_4ccqb"]
+[ext_resource type="Script" uid="uid://c7cwfk3vqjf4g" path="res://turret/laser_turret/laser_bullet/laser_bullet.gd" id="1_ulijw"]
+[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_tghun"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
@@ -127,22 +127,21 @@ damping_max = 100.0
 scale_curve = SubResource("CurveTexture_ioued")
 color_ramp = SubResource("GradientTexture1D_ov85m")
 
-[node name="smg_bullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
+[node name="LaserBullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
 collision_layer = 0
 collision_mask = 3
-script = ExtResource("1_2w5qf")
+script = ExtResource("1_ulijw")
 speed = 1600.0
 damage = 100
 extinguish_on_impact = true
 extinguish_on_effect_body = true
 duration_timer = NodePath("lifespan")
 duration = 10.0
-impact_knockback = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(1.75, 1.75)
-texture = ExtResource("2_4ccqb")
+texture = ExtResource("2_tghun")
 hframes = 8
 frame = 2
 
@@ -159,7 +158,7 @@ texture_filter = 1
 material = SubResource("CanvasItemMaterial_g0ebo")
 position = Vector2(-12, 0)
 amount = 32
-texture = ExtResource("2_4ccqb")
+texture = ExtResource("2_tghun")
 lifetime = 0.3
 process_material = SubResource("ParticleProcessMaterial_1brg8")
 
@@ -167,7 +166,7 @@ process_material = SubResource("ParticleProcessMaterial_1brg8")
 visible = false
 material = SubResource("CanvasItemMaterial_61q2t")
 position = Vector2(18, 0)
-texture = ExtResource("2_4ccqb")
+texture = ExtResource("2_tghun")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
