@@ -180,9 +180,11 @@ func take_primary_action(_global_mouse_position : Vector2) -> void:
 	
 func set_camera_active(cam_active : bool) -> void:
 	$Camera2D.enabled = cam_active
-	
 
-func take_damage(dmg : float, _damage_type) -> void:
+
+
+func take_damage(dmg : float, _damage_type: String = "default") -> void:
+
 	health -= dmg
 
 
@@ -191,8 +193,8 @@ func die() -> void:
 		Main.level.hud.alert_manager.add_alert("You have died", 5.0)
 	died.emit()
 	queue_free()
-	
-	
+
+
 func _exit_tree() -> void:
 	if current:
 		#print("player submitting record")
