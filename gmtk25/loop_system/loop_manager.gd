@@ -92,7 +92,7 @@ func end_loop() -> void:
 	map.set_players_active(false)
 	map.active = false
 	if is_instance_valid(current_player):
-		print("loop manager snagging record")
+		#print("loop manager snagging record")
 		submit_input_record(current_player.input_record)
 	loop_ended.emit()
 	if current_loop == loops_allowed:

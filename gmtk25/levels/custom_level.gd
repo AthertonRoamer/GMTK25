@@ -31,3 +31,10 @@ func _ready() -> void:
 		push_warning("No loop manager set in level, loading generic one")
 	loop_manager.run_next_loop()
 	
+	
+func get_map() -> Map:
+	if loop_manager and loop_manager.map:
+		return loop_manager.map
+	else:
+		return null
+	

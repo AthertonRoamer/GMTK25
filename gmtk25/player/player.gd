@@ -48,7 +48,7 @@ var input_record : InputRecord
 var input_record_read_index : int = 0
 
 func _ready() -> void:
-	add_to_group("damagable")
+	add_to_group("damageable")
 	if set_current_friction_from_slow_down_time:
 		#250 px/sec 250 px/sec / 1 sec = 250 px / sec /sec
 		current_friction = walk_max_speed / current_slow_down_time
@@ -61,6 +61,7 @@ func _ready() -> void:
 	if current:
 		input_record = InputRecord.new()
 		input_record.loop_index = Main.level.loop_manager.current_loop
+		$Camera2D.enabled = true
 	else:
 		$Camera2D.enabled = false
 		modulate = Color(Color.WHITE, 0.5)
@@ -171,11 +172,11 @@ func _physics_process(delta: float) -> void:
 	
 	
 func take_primary_action(_global_mouse_position : Vector2) -> void:
-	#print("fire")
-	pass
+	$StandardGun.projectile_direction = Vector2.UP	.rotated(rotation)
+	$StandardGun.fire()
 	
 
-func take_damage(dmg : float) -> void:
+func take_damage(dmg : float, _damage_type) -> void:
 	health -= dmg
 
 
@@ -185,5 +186,5 @@ func die() -> void:
 	
 func _exit_tree() -> void:
 	if current:
-		print("player submitting record")
+		#print("player submitting record")
 		Main.level.loop_manager.submit_input_record(input_record)

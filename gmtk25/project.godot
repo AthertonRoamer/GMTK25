@@ -57,6 +57,11 @@ player_primary={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Obstacles"
+2d_physics/layer_2="Players"
+
 [physics]
 
 common/physics_jitter_fix=0.0
