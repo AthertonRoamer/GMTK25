@@ -127,7 +127,7 @@ scale_curve = SubResource("CurveTexture_ioued")
 color_ramp = SubResource("GradientTexture1D_ov85m")
 
 [node name="TurretBullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.5, 0.5)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_jjki3")
@@ -191,6 +191,7 @@ process_material = SubResource("ParticleProcessMaterial_54rnq")
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_oevld")
+pitch_scale = 2.0
 autoplay = true
 max_distance = 500.0
 
