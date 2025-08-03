@@ -1,6 +1,7 @@
-class_name LaserTurret
+class_name Turret
 extends StaticBody2D
 
+@export var shot_wait_interval : float = 0.2
 @export var sight_range : float = 500
 
 @onready var turret_area = $TurretArea
@@ -12,8 +13,9 @@ var current_direction = Vector2.RIGHT
 
 @export var rotation_speed = 180
 
-@export var max_health : int = 400
+var max_health : int = 400
 @export var starting_health : int = 400
+@export var bullet_scene : PackedScene
 @export var range_circle_color : Color = Color(Color.DARK_RED, 0.3)
 
 var health : float:
@@ -28,7 +30,11 @@ var health : float:
 			health = v
 
 func _ready() -> void:
+	if bullet_scene and bullet_scene.can_instantiate():
+		$gun.projectile_scene = bullet_scene
+	$gun.shot_interval = shot_wait_interval
 	health = starting_health
+	max_health = starting_health
 	add_to_group("damageable")
 	if is_instance_valid(turret_area):
 		turret_area.sight_range = sight_range
