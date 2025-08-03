@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bktthr0uiq1by"]
+
+[ext_resource type="Script" uid="uid://d4d7ias1c0sxg" path="res://levels/final_levels/level_1.gd" id="1_jub2x"]
+[ext_resource type="PackedScene" uid="uid://dp5rjuy3drpwa" path="res://levels/final_levels/final_maps/tech_map_1.tscn" id="2_jub2x"]
+
+[node name="TestLevel1" type="Node2D"]
+script = ExtResource("1_jub2x")
+time_travel = true
+loop_time = 20.0
+map_scene = ExtResource("2_jub2x")
