@@ -36,11 +36,14 @@ func create_saved_player_run_data(p : Player, input_record : InputRecord) -> Sav
 	if is_instance_valid(Main.level.loop_manager.current_player):
 		data.once_current_player_input_record = Main.level.loop_manager.current_player.input_record
 	elif Main.level.loop_manager.has_input_record_from_loop(data.loop_when_saved):
-		data.once_current_player_input_record = Main.level.loop_system.get_input_record_from_loop(data.loop_when_saved)
+		data.once_current_player_input_record = Main.level.loop_manager.get_input_record_from_loop(data.loop_when_saved)
 	else:
 		push_warning("Saved player handler unable to aquire once current player input_record")
 	data.once_current_player_input_record.incomplete = true
-	data.once_current_player = Main.level.loop_manager.current_player
+	if not is_instance_valid(Main.level.loop_manager.current_player) or Main.level.loop_manager.current_player.death_accomplished:
+		push_warning("Current player already dead at saving past player")
+	else:
+		data.once_current_player = Main.level.loop_manager.current_player
 	data.frame_when_saved = input_record.death_frame + 1
 	input_record.death_frame = -1
 	data.loop_being_completed = input_record.loop_index
@@ -75,7 +78,6 @@ func continue_resolved_saved_player_run() -> void:
 	start_saved_player_run(resolved_saved_player_run_data)
 	get_tree().paused = false
 	resolved_saved_player_run_data = null
-	get_top_stack_data().saved_player.velocity = Vector2.ZERO
 	
 	
 func start_saved_player_run(data : SavedPlayerRunData) -> void:
@@ -85,8 +87,8 @@ func start_saved_player_run(data : SavedPlayerRunData) -> void:
 		data.once_current_player.prepare_to_run_as_once_current_player()
 	else:
 		push_warning("before saved player run once current player is already deleted")
-		abort_save()
-		return
+		#abort_save()
+		#return
 	if is_instance_valid(data.saved_player):
 		data.saved_player.prepare_to_run_as_saved_player()
 	else:
@@ -119,9 +121,7 @@ func end_loop_of_saved_run() -> void:
 		get_top_stack_data().new_saved_player_input_record = data.saved_player.input_record
 	#if its from loop 1, it needs to be at postion 0
 	var input_data_index : int = get_top_stack_data().new_saved_player_input_record.loop_index - 1
-	print("Before remove: ", Main.level.loop_manager.player_input_records)
 	Main.level.loop_manager.player_input_records.remove_at(input_data_index)
-	print("After remove: ", Main.level.loop_manager.player_input_records)
 	Main.level.loop_manager.player_input_records.insert(input_data_index, saved_player_run_data_stack.back().new_saved_player_input_record)
 	#restore saved player as non current past self maye unnecessary
 	#restore once current as current maybe unneseccary

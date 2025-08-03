@@ -10,7 +10,7 @@ extends Level
 
 
 @export_group("Map")
-@export var map_scene : PackedScene = preload("res://levels/maps/test/test_map_1.tscn")
+@export var map_scene : PackedScene = preload("res://levels/final_levels/final_maps/map_1.tscn")
 
 @export_group("Other")
 @export var player_scene : PackedScene = preload("res://player/player.tscn")

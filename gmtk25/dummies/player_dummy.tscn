@@ -43,7 +43,7 @@ _data = {
 &"death": SubResource("Animation_3r2or")
 }
 
-[node name="player_dummy" type="StaticBody2D"]
+[node name="player_dummy" type="StaticBody2D" groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_3r2or")
 
