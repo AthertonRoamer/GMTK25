@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://ba103jdgufusi"]
+[gd_scene load_steps=13 format=4 uid="uid://ba103jdgufusi"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_o7tw6"]
 [ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_4gqla"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_j2oli"]
 [ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_4gqla"]
+[ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_mhmes"]
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="4_mhmes"]
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="5_82xgf"]
 [ext_resource type="PackedScene" uid="uid://bg4xyghehcp7w" path="res://placeables/shadow.tscn" id="6_pjbmp"]
@@ -36,6 +37,9 @@ tile_map_data = PackedByteArray("AAANAAkAAAABAAAAAAAOAAkAAAABAAAAAAAPAAkAAAABAAA
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
 position = Vector2(1056, 609)
+
+[node name="VictoryArea" parent="map" instance=ExtResource("3_mhmes")]
+position = Vector2(1051, 238)
 
 [node name="buttons" type="Node2D" parent="."]
 position = Vector2(-115, -697)
@@ -120,7 +124,6 @@ frame = 13
 
 [node name="gate1" parent="gates" instance=ExtResource("5_82xgf")]
 position = Vector2(1293, 1234)
-scale = Vector2(1.5, 1.5)
 
 [node name="gate2" parent="gates" instance=ExtResource("5_82xgf")]
 position = Vector2(736, 511)

@@ -5,6 +5,6 @@
 
 [node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_4ovou")
-time_travel = false
-loop_time = 35.0
+loop_time = 25.0
+loops_allowed = 2
 map_scene = ExtResource("2_4ovou")

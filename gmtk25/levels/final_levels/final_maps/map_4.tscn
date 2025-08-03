@@ -112,15 +112,14 @@ frame = 19
 [node name="tutorial" type="Node2D" parent="."]
 
 [node name="Label" type="Label" parent="tutorial"]
-visible = false
 texture_filter = 1
-offset_left = 482.0
-offset_top = 291.0
-offset_right = 609.0
-offset_bottom = 416.0
+offset_left = 721.0
+offset_top = 51.0
+offset_right = 848.0
+offset_bottom = 96.0
 theme = ExtResource("6_cvcu8")
 theme_override_font_sizes/font_size = 13
-text = "These are hold buttons. Use the timeloop to click both at once."
+text = "Take out the SMG turrets."
 autowrap_mode = 3
 
 [node name="gates" type="Node2D" parent="."]

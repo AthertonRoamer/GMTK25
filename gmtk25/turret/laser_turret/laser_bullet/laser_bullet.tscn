@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c4sty4bcyhy07"]
+[gd_scene load_steps=20 format=3 uid="uid://c4sty4bcyhy07"]
 
 [ext_resource type="Script" uid="uid://c7cwfk3vqjf4g" path="res://turret/laser_turret/laser_bullet/laser_bullet.gd" id="1_ulijw"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_tghun"]
+[ext_resource type="AudioStream" uid="uid://k8wsfbuiaon4" path="res://sound/effects/futuristic-smg-sound-effect-100378.mp3" id="3_p0toi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
@@ -131,7 +132,7 @@ color_ramp = SubResource("GradientTexture1D_ov85m")
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_ulijw")
-speed = 1600.0
+speed = 2500.0
 damage = 100
 extinguish_on_impact = true
 extinguish_on_effect_body = true
@@ -146,7 +147,6 @@ hframes = 8
 frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_daedc")
 
@@ -189,7 +189,7 @@ explosiveness = 0.75
 process_material = SubResource("ParticleProcessMaterial_54rnq")
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
-volume_db = -17.333
+stream = ExtResource("3_p0toi")
 autoplay = true
 max_distance = 500.0
 

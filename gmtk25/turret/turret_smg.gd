@@ -3,7 +3,7 @@ extends ProjectileHandler
 
 
 @export var shot_interval = 0.2
-var time_since_last_shot = 0.0
+var time_since_last_shot = 2.0
 
 func set_up_projectile() -> Projectile:
 	var new_projectile = super()
