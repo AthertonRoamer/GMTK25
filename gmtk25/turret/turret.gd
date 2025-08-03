@@ -60,6 +60,7 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	$gun.fire()
+	$gun2.fire()
 	pass
 
 func rotate_to_target(ntarget, delta):
@@ -98,7 +99,7 @@ func die() -> void:
 	
 	
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, sight_range, range_circle_color, false, 2)
+	draw_circle(Vector2.ZERO, sight_range/2, range_circle_color, false, 2)
 	
 	
 func activate(_b : bool) -> void:

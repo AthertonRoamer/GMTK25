@@ -1,0 +1,46 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbwxl0qwuxm21"]
+
+[ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="1_dkryr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vecww"]
+particles_animation = true
+particles_anim_h_frames = 8
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_dkryr"]
+
+[sub_resource type="CurveTexture" id="CurveTexture_vecww"]
+curve = SubResource("Curve_dkryr")
+
+[sub_resource type="Curve" id="Curve_ke0mt"]
+_data = [Vector2(0, 0.47191), 0.0, 0.0, 0, 0, Vector2(0.397059, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3a5dr"]
+curve = SubResource("Curve_ke0mt")
+
+[sub_resource type="Curve" id="Curve_bp4ws"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.529412, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lt0cp"]
+curve = SubResource("Curve_bp4ws")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ggjh7"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 51.72
+initial_velocity_max = 160.92
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_lt0cp")
+alpha_curve = SubResource("CurveTexture_vecww")
+emission_curve = SubResource("CurveTexture_3a5dr")
+
+[node name="explosion" type="GPUParticles2D"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_vecww")
+amount = 64
+texture = ExtResource("1_dkryr")
+process_material = SubResource("ParticleProcessMaterial_ggjh7")
