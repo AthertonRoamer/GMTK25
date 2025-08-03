@@ -32,7 +32,6 @@ metadata/_custom_type_script = "uid://tidjdpqv0mrg"
 
 [node name="Game" type="Node"]
 script = ExtResource("1_hica5")
-level_menu_enabled = true
 
 [node name="LevelMenu" parent="." instance=ExtResource("2_2ckys")]
 theme = ExtResource("3_flr8x")
