@@ -1,9 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo7ahqq7i826s"]
+[gd_scene load_steps=2 format=3 uid="uid://bo7ahqq7i826s"]
 
 [ext_resource type="Script" uid="uid://d4d7ias1c0sxg" path="res://levels/final_levels/level_1.gd" id="1_psydd"]
-[ext_resource type="PackedScene" uid="uid://150gcrgpxiu4" path="res://levels/final_levels/final_maps/map_1.tscn" id="2_d1s8c"]
 
 [node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_psydd")
+time_travel = false
 loop_time = 35.0
-map_scene = ExtResource("2_d1s8c")

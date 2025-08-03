@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://gfmjiblkd7jf"]
+[gd_scene load_steps=10 format=3 uid="uid://gfmjiblkd7jf"]
 
 [ext_resource type="Texture2D" uid="uid://c8eqc5hexfgia" path="res://assets/turrets_ss.png" id="1_6fjh4"]
 [ext_resource type="Script" uid="uid://dtyegf311rnku" path="res://turret/turret.gd" id="1_p4ano"]
+[ext_resource type="PackedScene" uid="uid://bbwxl0qwuxm21" path="res://placeables/explosion.tscn" id="2_rykjw"]
 [ext_resource type="Script" uid="uid://s1qad5um0r3b" path="res://turret/turret_smg.gd" id="3_8uehm"]
 [ext_resource type="PackedScene" uid="uid://cwn5kuvawj3h" path="res://turret/turret_bullet/turret_bullet.tscn" id="4_7gi6x"]
 [ext_resource type="Script" uid="uid://b8kogv65gtuaw" path="res://turret/turret_area.gd" id="5_4h7n3"]
+[ext_resource type="AudioStream" uid="uid://ditwf5oqqah46" path="res://sound/effects/metal-hit-12-193278.mp3" id="7_0x0jn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s81uv"]
 radius = 12.0416
@@ -16,8 +18,9 @@ radius = 1.0
 scale = Vector2(1.5, 1.5)
 collision_mask = 0
 script = ExtResource("1_p4ano")
-shot_wait_interval = 0.5
-sight_range = 150.0
+shot_wait_interval = 1.0
+sight_range = 260.0
+explosion_scene = ExtResource("2_rykjw")
 rotation_speed = 360
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,13 +48,18 @@ collision_mask = 3
 [node name="gun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(10.6667, -8)
 script = ExtResource("3_8uehm")
-shot_interval = 0.5
+shot_interval = 1.0
 projectile_scene = ExtResource("4_7gi6x")
 fire_position_node = NodePath(".")
 
 [node name="gun2" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
 position = Vector2(10.6667, 8)
 script = ExtResource("3_8uehm")
-shot_interval = 0.5
+shot_interval = 1.0
 projectile_scene = ExtResource("4_7gi6x")
 fire_position_node = NodePath(".")
+
+[node name="damage_noise" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_0x0jn")
+volume_db = -20.0

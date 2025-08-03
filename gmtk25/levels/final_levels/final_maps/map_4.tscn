@@ -1,0 +1,161 @@
+[gd_scene load_steps=11 format=4 uid="uid://bbwnuf0gnfqsl"]
+
+[ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_s8ebx"]
+[ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_xftw7"]
+[ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_7rkp4"]
+[ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="4_q2jcw"]
+[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="5_ynp5s"]
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="6_cvcu8"]
+[ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="7_gebc2"]
+[ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="8_ihbvh"]
+[ext_resource type="PackedScene" uid="uid://gfmjiblkd7jf" path="res://turret/turret.tscn" id="10_3pmv4"]
+
+[sub_resource type="Environment" id="Environment_tb4ed"]
+background_mode = 3
+glow_enabled = true
+
+[node name="Map4" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_s8ebx")
+spawn_point = NodePath("map/SpawnPoint")
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
+environment = SubResource("Environment_tb4ed")
+
+[node name="ColorRect" type="ColorRect" parent="map"]
+offset_left = -536.0
+offset_top = -275.0
+offset_right = 1745.0
+offset_bottom = 1168.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" parent="map" instance=ExtResource("2_xftw7")]
+tile_map_data = PackedByteArray("AAANAAUAAAAFAAAAAAALAAgAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAADAAAAAAALAAUAAAABAAAAAAAMAAUAAAABAAAAAAAMAAYAAAAGAAAAAAAMAAcAAAAEAAAAAAAMAAgAAAAFAAAAAAAMAAIAAAAAAAAAAAAMAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAKAAMAAAACAAAAAAAJAAMAAAAGAAAAAAAIAAMAAAADAAAAAAAMAAQAAAAAAAAAAAALAAQAAAAAAAAAAAAKAAQAAAACAAAAAAAJAAQAAAAEAAAAAAAIAAQAAAAAAAAAAAANAAIAAAAEAAAAAAANAAMAAAAEAAAAAAANAAQAAAAEAAAAAAAKAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAHAAYAAAACAAAAAAAHAAIAAAAAAAEAAAAIAAIAAAABAAAAAAAJAAIAAAABAAAAAAAKAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAHAAMAAAAHAAAAAAAHAAQAAAACAAAAAAAIAAUAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAHAAUAAAACAAAAAAAHAAEAAAAHAAAAAAAIAAEAAAADAAAAAAAJAAEAAAADAAAAAAAKAAEAAAADAAAAAAALAAEAAAADAAAAAAAMAAEAAAADAAAAAAANAAEAAAAGAAAAAAAKAAcAAAACAAAAAAAJAAcAAAAFAAAAAAAIAAcAAAABAAAAAAAHAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAA=")
+
+[node name="SpawnPoint" type="Node2D" parent="map"]
+position = Vector2(511, 126)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="map"]
+color = Color(0.783523, 0.783523, 0.783523, 1)
+
+[node name="VictoryArea" parent="map" instance=ExtResource("3_7rkp4")]
+position = Vector2(735, 699)
+rotation = 3.14159
+scale = Vector2(1.5, 1.5)
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="button" parent="buttons" instance=ExtResource("4_q2jcw")]
+position = Vector2(482, 353)
+rotation = 1.7665
+activation_mode = "Toggle"
+target_scene = NodePath("../../gates/gate1")
+
+[node name="wires" type="Node2D" parent="."]
+
+[node name="wires1" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(544, 371)
+rotation = -1.96196
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires2" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(621, 393)
+rotation = -1.96196
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires3" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(692, 413)
+rotation = -4.90619
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires4" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(765, 449)
+rotation = -4.90619
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires5" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(791, 503)
+rotation = -3.48627
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires6" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(765, 559)
+rotation = -3.1716
+scale = Vector2(0.563113, 0.580275)
+texture = ExtResource("5_ynp5s")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="tutorial"]
+visible = false
+texture_filter = 1
+offset_left = 482.0
+offset_top = 291.0
+offset_right = 609.0
+offset_bottom = 416.0
+theme = ExtResource("6_cvcu8")
+theme_override_font_sizes/font_size = 13
+text = "These are hold buttons. Use the timeloop to click both at once."
+autowrap_mode = 3
+
+[node name="gates" type="Node2D" parent="."]
+
+[node name="gate1" parent="gates" instance=ExtResource("7_gebc2")]
+position = Vector2(737, 576)
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="light" parent="lights" instance=ExtResource("8_ihbvh")]
+position = Vector2(644, 190)
+rotation = -1.57932
+
+[node name="light2" parent="lights" instance=ExtResource("8_ihbvh")]
+position = Vector2(891, 343)
+rotation = -3.15635
+
+[node name="light3" parent="lights" instance=ExtResource("8_ihbvh")]
+position = Vector2(496, 509)
+rotation = -4.70503
+
+[node name="light4" parent="lights" instance=ExtResource("8_ihbvh")]
+position = Vector2(829, 488)
+rotation = -6.28264
+
+[node name="turrets" type="Node2D" parent="."]
+
+[node name="Turret" parent="turrets" instance=ExtResource("10_3pmv4")]
+position = Vector2(799, 222)
+rotation = -2.67308
+
+[node name="Turret2" parent="turrets" instance=ExtResource("10_3pmv4")]
+position = Vector2(542, 250)
+rotation = 0.971192
+
+[node name="Turret3" parent="turrets" instance=ExtResource("10_3pmv4")]
+position = Vector2(546, 441)
+rotation = -0.520161

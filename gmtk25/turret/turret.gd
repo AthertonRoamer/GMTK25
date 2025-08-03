@@ -5,7 +5,7 @@ extends StaticBody2D
 @export var sight_range : float = 500
 
 @onready var turret_area = $TurretArea
-#@export var explosion_scene : PackedScene
+@export var explosion_scene : PackedScene
 
 
 var target : Node2D
@@ -92,18 +92,20 @@ func get_closest_enemy(enemies : Array) -> Node2D:
 
 func take_damage(damage : float, _damage_type : String = "none") -> void:
 	health -= damage
+	%damage_noise.play()
 
 func die() -> void:
-	#var explosion = explosion_scene.instantiate()
-	#explosion.global_position = global_position
-	#if is_instance_valid(Main.world):
-		#Main.world.add_child(explosion)
+	var explosion = explosion_scene.instantiate()
+	explosion.global_position = global_position
+	if is_instance_valid(Main.level.get_map()):
+		Main.level.get_map().add_child(explosion)
+		explosion.emitting = true
 	queue_free()
 	
 	
 func _draw() -> void:
-	draw_circle(Vector2.ZERO, sight_range/2, range_circle_color, false, 2)
-	
+	#draw_circle(Vector2.ZERO, sight_range, range_circle_color, false, 2)
+	pass
 	
 func activate(_b : bool) -> void:
 	active = not active
