@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dnjbypsjvq13u"]
+[gd_scene load_steps=11 format=4 uid="uid://dnjbypsjvq13u"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_deoxe"]
 [ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_siayu"]
 [ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_30il3"]
 [ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_mu6ma"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="4_nrkvg"]
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="6_c4twc"]
 [ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="6_my3lp"]
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="6_twc8s"]
 [ext_resource type="PackedScene" uid="uid://gfmjiblkd7jf" path="res://turret/turret.tscn" id="11_siayu"]
@@ -30,13 +31,13 @@ offset_bottom = 4991.0
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" parent="map" instance=ExtResource("2_siayu")]
-tile_map_data = PackedByteArray("AAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAAAAAEAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAAFAAAAAAAJAAQAAAAAAAEAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAACAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAEAAMAAAADAAAAAAAFAAMAAAAGAAAAAAAGAAMAAAAHAAAAAAAHAAMAAAADAAAAAAAIAAMAAAADAAAAAAAJAAMAAAADAAAAAAAKAAMAAAADAAAAAAALAAMAAAADAAAAAAAMAAMAAAADAAAAAAANAAMAAAADAAAAAAARAAEAAAADAAAAAAAOAAEAAAAHAAAAAAAPAAEAAAADAAAAAAAQAAEAAAADAAAAAAASAAEAAAADAAAAAAATAAEAAAADAAAAAAAUAAEAAAAGAAAAAAASAAYAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAAFAAAAAAAUAAIAAAAEAAAAAAAUAAMAAAAEAAAAAAAUAAQAAAAEAAAAAAAUAAUAAAAEAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAUAAAAAAAAAAAADAAMAAAADAAAAAAACAAMAAAADAAAAAAABAAMAAAAHAAAAAAABAAQAAAAAAAEAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAAAAAEAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAEAAQAAAABAAAAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAAFAAAAAAAJAAQAAAAAAAEAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAAHAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAADAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAADAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAADAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAEAAMAAAADAAAAAAAFAAMAAAAGAAAAAAAGAAMAAAAHAAAAAAAHAAMAAAADAAAAAAAIAAMAAAADAAAAAAAJAAMAAAADAAAAAAAKAAMAAAADAAAAAAALAAMAAAADAAAAAAAMAAMAAAADAAAAAAANAAMAAAADAAAAAAASAAYAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAAFAAAAAAAUAAIAAAAGAAAAAAAUAAMAAAAEAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAEAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAADAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAADAAAAAAATAAUAAAAAAAAAAAADAAMAAAADAAAAAAACAAMAAAADAAAAAAABAAMAAAAHAAAAAAABAAQAAAAAAAEAAAACAAQAAAABAAAAAAADAAQAAAABAAAAAAA=")
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
 position = Vector2(104, 257)
 
 [node name="VictoryArea" parent="map" instance=ExtResource("3_30il3")]
-position = Vector2(1479, 259)
+position = Vector2(1467, 290)
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
 
@@ -173,30 +174,10 @@ hframes = 8
 vframes = 3
 frame = 19
 
-[node name="wires17" type="Sprite2D" parent="wires"]
-texture_filter = 1
-position = Vector2(802.911, -673.072)
-rotation = 7.20246
-scale = Vector2(0.694682, 0.530399)
-texture = ExtResource("4_nrkvg")
-hframes = 8
-vframes = 3
-frame = 19
-
-[node name="wires18" type="Sprite2D" parent="wires"]
-texture_filter = 1
-position = Vector2(801.391, -541.944)
-rotation = 7.20246
-scale = Vector2(0.694682, 0.530399)
-texture = ExtResource("4_nrkvg")
-hframes = 8
-vframes = 3
-frame = 19
-
 [node name="wires19" type="Sprite2D" parent="wires"]
 texture_filter = 1
-position = Vector2(908.69, -701.054)
-rotation = 11.2159
+position = Vector2(917.594, -716.569)
+rotation = 12.743
 scale = Vector2(0.694682, 0.530399)
 texture = ExtResource("4_nrkvg")
 hframes = 8
@@ -223,53 +204,62 @@ hframes = 8
 vframes = 3
 frame = 19
 
-[node name="wires14" type="Sprite2D" parent="wires"]
-texture_filter = 1
-position = Vector2(796.851, -428.017)
-rotation = 6.90383
-scale = Vector2(0.604826, 0.75731)
-texture = ExtResource("4_nrkvg")
-hframes = 8
-vframes = 3
-frame = 19
-
 [node name="tutorial" type="Node2D" parent="."]
 position = Vector2(-213, -1081)
+
+[node name="Label" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 985.0
+offset_top = 1196.0
+offset_right = 1102.0
+offset_bottom = 1265.0
+theme = ExtResource("6_c4twc")
+theme_override_font_sizes/font_size = 10
+text = "This button will turn off the turrets, but also close the door."
+autowrap_mode = 3
 
 [node name="gates" type="Node2D" parent="."]
 position = Vector2(-74, -1022)
 
 [node name="gate1" parent="gates" instance=ExtResource("6_twc8s")]
-position = Vector2(1417, 1278)
+position = Vector2(1416, 1307)
 rotation = 1.5708
-scale = Vector2(1.5, 1.5)
 closed_by_default = false
 
 [node name="lights" type="Node2D" parent="."]
 position = Vector2(-174, -921)
 
 [node name="light" parent="lights" instance=ExtResource("6_my3lp")]
-position = Vector2(1077, 991)
+position = Vector2(878, 1116)
+
+[node name="light6" parent="lights" instance=ExtResource("6_my3lp")]
+position = Vector2(437, 1235)
 
 [node name="light2" parent="lights" instance=ExtResource("6_my3lp")]
 position = Vector2(1079, 1360)
 
 [node name="light3" parent="lights" instance=ExtResource("6_my3lp")]
-position = Vector2(1511, 1359)
+position = Vector2(1469, 1364)
+
+[node name="light7" parent="lights" instance=ExtResource("6_my3lp")]
+position = Vector2(1469, 1364)
 
 [node name="light4" parent="lights" instance=ExtResource("6_my3lp")]
-position = Vector2(1511, 992)
+position = Vector2(1110, 1052)
+
+[node name="light5" parent="lights" instance=ExtResource("6_my3lp")]
+position = Vector2(1471, 1053)
 
 [node name="lasers" type="Node2D" parent="."]
 
 [node name="Turret2" parent="lasers" instance=ExtResource("11_siayu")]
-position = Vector2(607, 291)
+position = Vector2(646, -3)
 
 [node name="Turret9" parent="lasers" instance=ExtResource("11_siayu")]
-position = Vector2(416, 222)
+position = Vector2(455, -63)
 
 [node name="Turret3" parent="lasers" instance=ExtResource("11_siayu")]
-position = Vector2(1024, 126)
+position = Vector2(1024, 190)
 
 [node name="Turret4" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1025, 385)
@@ -281,10 +271,10 @@ position = Vector2(1150, 386)
 position = Vector2(1283, 382)
 
 [node name="Turret7" parent="lasers" instance=ExtResource("11_siayu")]
-position = Vector2(1281, 127)
+position = Vector2(1281, 191)
 
 [node name="Turret8" parent="lasers" instance=ExtResource("11_siayu")]
-position = Vector2(1152, 129)
+position = Vector2(1152, 193)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tb4ed")

@@ -51,6 +51,7 @@ func open() -> void:
 		collision_shape.set_deferred("disabled", true)
 		animation_player.play("open")
 		is_open = true
+
 		
 		
 func close() -> void:
