@@ -214,24 +214,24 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="tutorial"]
 texture_filter = 1
-offset_left = 1240.0
-offset_top = 362.0
-offset_right = 1345.0
-offset_bottom = 447.0
+offset_left = 1061.0
+offset_top = 658.0
+offset_right = 1166.0
+offset_bottom = 743.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
-text = "Time loops 3 times this level. "
+text = "Time will loop 3 times this level. "
 autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="tutorial"]
 texture_filter = 1
-offset_left = 910.0
-offset_top = 402.0
-offset_right = 1015.0
-offset_bottom = 487.0
+offset_left = 1231.0
+offset_top = 351.0
+offset_right = 1336.0
+offset_bottom = 436.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
-text = "To skip to the next loop, hit 'L'."
+text = "To skip to the next loop, hit 'F'."
 autowrap_mode = 3
 
 [node name="gates" type="Node2D" parent="."]

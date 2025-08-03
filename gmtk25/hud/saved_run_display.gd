@@ -4,11 +4,16 @@ enum SAVED_RUN_DISPLAY_STATE {NONE, BEFORE_SAVED_RUN, BEFORE_REPLAY, BEFORE_FINI
 
 var state : SAVED_RUN_DISPLAY_STATE = SAVED_RUN_DISPLAY_STATE.NONE
 
+var waiting_for_true_pause_to_end : bool = false
+
 func _ready() -> void:
 	visible = false
 	Main.level.loop_manager.saved_player_handler.resolved_to_begin_saved_run.connect(_on_resolved_to_begin_saved_run)
 	Main.level.loop_manager.saved_player_handler.resolved_to_replay.connect(_on_resolved_to_replay)
 	Main.level.loop_manager.saved_player_handler.resolved_to_finish_loop.connect(_on_resolved_to_finish_loop)
+	Pause.true_pause.connect(_on_pause_announced)
+	Main.game.level_manager.opened_level.connect(_on_level_opened)
+	Main.game.level_manager.closed_level.connect(_on_level_opened)
 	
 	
 func _on_resolved_to_begin_saved_run(data : SavedPlayerRunData) -> void:
@@ -50,6 +55,26 @@ func continue_selected() -> void:
 		SAVED_RUN_DISPLAY_STATE.BEFORE_FINISH_LOOP:
 			Main.level.loop_manager.saved_player_handler.finish_loop()
 	visible = false
+	waiting_for_true_pause_to_end = false
+	state = SAVED_RUN_DISPLAY_STATE.NONE
+	
+	
+func _on_pause_announced(b : bool) -> void:
+	if b:
+		if visible:
+			waiting_for_true_pause_to_end = true
+			visible = false
+	if not b:
+		if waiting_for_true_pause_to_end:
+			visible = true
+			waiting_for_true_pause_to_end = false
+			
+			
+func _on_level_opened() -> void:
+	waiting_for_true_pause_to_end = false
+	visible = false
+	if state != SAVED_RUN_DISPLAY_STATE.NONE:
+		push_warning("Saved player display gave up on wating bc loop ended")
 	state = SAVED_RUN_DISPLAY_STATE.NONE
 	
 	

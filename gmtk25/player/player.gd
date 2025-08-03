@@ -38,6 +38,8 @@ var current_friction : float = 2500
 
 #endregion 
 
+signal health_changed(h : int)
+
 var starting_health : float = 100
 var health = starting_health:
 	set(v):
@@ -46,6 +48,7 @@ var health = starting_health:
 			queue_die()
 		else:
 			health = v
+	
 			
 var should_walk_up : bool = false:
 	set(v):
