@@ -127,6 +127,7 @@ scale_curve = SubResource("CurveTexture_ioued")
 color_ramp = SubResource("GradientTexture1D_ov85m")
 
 [node name="smg_bullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
+scale = Vector2(0.75, 0.75)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_2w5qf")
@@ -179,7 +180,7 @@ z_index = 10
 z_as_relative = false
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3ctt8")
-position = Vector2(21, 0)
+position = Vector2(26.6667, -5.96046e-08)
 scale = Vector2(0.5, 0.295)
 emitting = false
 amount = 24

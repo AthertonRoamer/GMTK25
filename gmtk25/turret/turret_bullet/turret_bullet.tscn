@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://55tmbj0cy4x0" path="res://turret/turret_bullet/turret_bullet.gd" id="1_jjki3"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_g1d77"]
+[ext_resource type="AudioStream" uid="uid://k8wsfbuiaon4" path="res://sound/effects/futuristic-smg-sound-effect-100378.mp3" id="3_oevld"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 2.0
-height = 50.0
+height = 36.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g0ebo"]
 particles_animation = true
@@ -102,8 +103,6 @@ particles_anim_h_frames = 8
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nalc4"]
-
 [sub_resource type="Gradient" id="Gradient_qq4gb"]
 colors = PackedColorArray(1, 1, 1, 1, 0.321728, 0.321728, 0.321728, 1)
 
@@ -128,10 +127,11 @@ scale_curve = SubResource("CurveTexture_ioued")
 color_ramp = SubResource("GradientTexture1D_ov85m")
 
 [node name="TurretBullet" type="Area2D" node_paths=PackedStringArray("duration_timer")]
+scale = Vector2(0.75, 0.75)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_jjki3")
-speed = 300.0
+speed = 500.0
 damage = 20
 extinguish_on_impact = true
 extinguish_on_effect_body = true
@@ -140,13 +140,14 @@ duration = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+position = Vector2(21, 0)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("2_g1d77")
-hframes = 8
-frame = 2
+hframes = 10
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-6, -1)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_daedc")
 
@@ -178,19 +179,24 @@ z_index = 10
 z_as_relative = false
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_3ctt8")
-position = Vector2(21, 0)
+position = Vector2(5.33333, 0)
 scale = Vector2(0.5, 0.295)
 emitting = false
 amount = 24
-texture = SubResource("CompressedTexture2D_nalc4")
+texture = ExtResource("2_g1d77")
 one_shot = true
 speed_scale = 4.0
 explosiveness = 0.75
 process_material = SubResource("ParticleProcessMaterial_54rnq")
 
 [node name="shoot" type="AudioStreamPlayer2D" parent="."]
-volume_db = -17.333
+stream = ExtResource("3_oevld")
 autoplay = true
 max_distance = 500.0
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(13, 0)
+target_position = Vector2(20, 0)
+collision_mask = 7
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
