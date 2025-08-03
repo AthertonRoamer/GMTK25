@@ -10,7 +10,7 @@ var current : bool = true #if not current its a past-self
 var awaiting_saved_run_completion : bool = false
 var running_as_saved_player : bool = false
 
-
+@export var immortal : bool = false
 #region physics variables
 @export_group("Walk")
 @export var walk_max_speed : float = 250
@@ -29,6 +29,7 @@ var walk_direction : Vector2 = Vector2.ZERO
 var dummy_body_scene : PackedScene = preload("res://dummies/player_dummy.tscn")
 
 var dying : bool = false
+var death_accomplished : bool = false
 var should_die : = false
 
 
@@ -241,6 +242,10 @@ func take_damage(dmg : float, _damage_type: String = "default") -> void:
 
 
 func die() -> void:
+	if immortal:
+		return
+	if death_accomplished:
+		return
 	if current: 
 		input_record.death_frame = Main.level.loop_manager.frame_index
 		input_record.seconds_remaining_at_death = Main.level.loop_manager.current_loop_time
@@ -250,8 +255,9 @@ func die() -> void:
 	dummy.rotation = rotation
 	Main.level.get_map().call_deferred("add_child", dummy)
 	died.emit(dummy)
-	
-	queue_free()
+	active = false
+	death_accomplished = true
+	$QueueFreeTimer.start()
 
 func _exit_tree() -> void:
 	if current:
@@ -263,5 +269,11 @@ func _exit_tree() -> void:
 			
 			
 func queue_die() -> void:
+	if immortal:
+		return
 	active = false
 	should_die = true
+
+
+func _on_queue_free_timer_timeout() -> void:
+	queue_free()

@@ -23,36 +23,30 @@ spawn_point = NodePath("map/SpawnPoint")
 environment = SubResource("Environment_tb4ed")
 
 [node name="ColorRect" type="ColorRect" parent="map"]
-
 offset_left = -6459.0
 offset_top = -5383.0
 offset_right = 7135.0
 offset_bottom = 4991.0
-
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" parent="map" instance=ExtResource("2_siayu")]
 tile_map_data = PackedByteArray("AAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAAAAAEAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAEAAQAAAAAAAEAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAACAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAEAAMAAAAHAAAAAAAFAAMAAAADAAAAAAAGAAMAAAADAAAAAAAHAAMAAAADAAAAAAAIAAMAAAADAAAAAAAJAAMAAAADAAAAAAAKAAMAAAADAAAAAAALAAMAAAADAAAAAAAMAAMAAAADAAAAAAANAAMAAAADAAAAAAARAAEAAAADAAAAAAAOAAEAAAAHAAAAAAAPAAEAAAADAAAAAAAQAAEAAAADAAAAAAASAAEAAAADAAAAAAATAAEAAAADAAAAAAAUAAEAAAAGAAAAAAASAAYAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAAFAAAAAAAUAAIAAAAEAAAAAAAUAAMAAAAEAAAAAAAUAAQAAAAEAAAAAAAUAAUAAAAEAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAUAAAAAAAAAAAA=")
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
-
-position = Vector2(333, 254)
+position = Vector2(318, 255)
 
 [node name="VictoryArea" parent="map" instance=ExtResource("3_30il3")]
-position = Vector2(1491, 261)
+position = Vector2(1479, 259)
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
-
 
 [node name="buttons" type="Node2D" parent="."]
 position = Vector2(-287, -1441)
 rotation = 1.51343
 
 [node name="button" parent="buttons" instance=ExtResource("3_mu6ma")]
-position = Vector2(1761.9, -1011.65)
+position = Vector2(1760.02, -1013.76)
 rotation = 0.253073
-activation_mode = "Toggle"
-target_scene = NodePath("../../gates/gate1")
 target_paths = Array[NodePath]([NodePath("../../lasers/Turret2"), NodePath("../../lasers/Turret3"), NodePath("../../lasers/Turret4"), NodePath("../../lasers/Turret5"), NodePath("../../lasers/Turret6"), NodePath("../../lasers/Turret7"), NodePath("../../lasers/Turret8"), NodePath("../../gates/gate1")])
 
 [node name="wires" type="Node2D" parent="."]
@@ -249,6 +243,7 @@ position = Vector2(-74, -1022)
 position = Vector2(1417, 1278)
 rotation = 1.5708
 scale = Vector2(1.5, 1.5)
+closed_by_default = false
 
 [node name="lights" type="Node2D" parent="."]
 position = Vector2(-174, -921)
@@ -261,7 +256,6 @@ position = Vector2(1079, 1360)
 
 [node name="light3" parent="lights" instance=ExtResource("6_my3lp")]
 position = Vector2(1511, 1359)
-
 
 [node name="light4" parent="lights" instance=ExtResource("6_my3lp")]
 position = Vector2(1511, 992)
@@ -288,7 +282,6 @@ position = Vector2(1281, 127)
 
 [node name="Turret8" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1152, 129)
-
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tb4ed")

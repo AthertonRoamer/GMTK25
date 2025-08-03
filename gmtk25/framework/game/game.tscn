@@ -1,12 +1,9 @@
-
-[gd_scene load_steps=11 format=3 uid="uid://baaluob8u3ca0"]
-
+[gd_scene load_steps=12 format=3 uid="uid://baaluob8u3ca0"]
 
 [ext_resource type="Script" uid="uid://28c51q8pnt3d" path="res://framework/game/game.gd" id="1_hica5"]
 [ext_resource type="PackedScene" uid="uid://cw01qeyxavh32" path="res://framework/game/level_system/level_menu/level_menu.tscn" id="2_2ckys"]
 [ext_resource type="Script" uid="uid://d3p0l0b5841ro" path="res://framework/game/game_level_manager.gd" id="2_erbt7"]
 [ext_resource type="Script" uid="uid://tidjdpqv0mrg" path="res://framework/game/level_system/level/level_data.gd" id="3_edldn"]
-
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="3_flr8x"]
 [ext_resource type="PackedScene" uid="uid://bo7ahqq7i826s" path="res://levels/final_levels/level_1.tscn" id="5_1qalo"]
 [ext_resource type="PackedScene" uid="uid://bhevx710242st" path="res://levels/final_levels/level_3.tscn" id="5_10ul7"]
@@ -27,10 +24,6 @@ level_name = ""
 metadata/_custom_type_script = "uid://tidjdpqv0mrg"
 
 [sub_resource type="Resource" id="Resource_y8b25"]
-
-
-
-
 script = ExtResource("3_edldn")
 level_scene = ExtResource("5_1qalo")
 included_in_menu = true
@@ -39,7 +32,6 @@ metadata/_custom_type_script = "uid://tidjdpqv0mrg"
 
 [node name="Game" type="Node"]
 script = ExtResource("1_hica5")
-level_menu_enabled = true
 
 [node name="LevelMenu" parent="." instance=ExtResource("2_2ckys")]
 theme = ExtResource("3_flr8x")
@@ -47,6 +39,4 @@ theme = ExtResource("3_flr8x")
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_erbt7")
 open_level_on_load = false
-
 level_list = Array[ExtResource("3_edldn")]([SubResource("Resource_flr8x"), SubResource("Resource_1qalo"), SubResource("Resource_y8b25")])
-
