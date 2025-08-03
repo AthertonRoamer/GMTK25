@@ -23,12 +23,14 @@ func _on_restart_pressed() -> void:
 	$"../SavedRunDisplay".waiting_for_true_pause_to_end = false
 	$"../SavedRunDisplay".visible = false
 	close_pause_menu()
+	CodeData.clear()
 	Main.game.level_manager.reload_active_level()
 
 
 func _on_quit_to_menu_pressed() -> void:
 	close_pause_menu()
 	Main.main.exit_game_to_menu()
+	CodeData.clear()
 	
 	
 func _input(event : InputEvent) -> void:
@@ -40,6 +42,7 @@ func _input(event : InputEvent) -> void:
 	elif event.is_action_pressed("restart_hotkey"):
 		if pause_menu_open:
 			close_pause_menu()
+		CodeData.clear()
 		Main.game.level_manager.reload_active_level()
 			
 			

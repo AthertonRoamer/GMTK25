@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dma268h46jek0"]
+
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_i7n5s"]
+[ext_resource type="Script" uid="uid://bo6jg6ag4lvcj" path="res://placeables/code_button/code_display.gd" id="2_1iwnq"]
+
+[node name="CodeDisplay" type="Label"]
+offset_left = 590.0
+offset_top = -18.0
+offset_right = 680.0
+offset_bottom = 21.0
+theme = ExtResource("1_i7n5s")
+text = "CODE:
+ 0000 "
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_1iwnq")
