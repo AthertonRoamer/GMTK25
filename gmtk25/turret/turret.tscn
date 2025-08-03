@@ -15,8 +15,8 @@ radius = 1.0
 [node name="Turret" type="StaticBody2D"]
 collision_mask = 0
 script = ExtResource("1_p4ano")
+shot_wait_interval = 0.5
 sight_range = 350.0
-max_health = 6
 starting_health = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,13 +30,6 @@ texture = ExtResource("1_6fjh4")
 hframes = 5
 frame = 2
 
-[node name="gun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
-position = Vector2(24, 0)
-script = ExtResource("3_8uehm")
-shot_interval = 0.5
-projectile_scene = ExtResource("4_7gi6x")
-fire_position_node = NodePath(".")
-
 [node name="TurretArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 2
@@ -47,3 +40,10 @@ shape = SubResource("CircleShape2D_pak7c")
 
 [node name="RayCast2D" type="RayCast2D" parent="TurretArea"]
 collision_mask = 3
+
+[node name="gun" type="Node2D" parent="." node_paths=PackedStringArray("fire_position_node")]
+position = Vector2(24, 0)
+script = ExtResource("3_8uehm")
+shot_interval = 0.5
+projectile_scene = ExtResource("4_7gi6x")
+fire_position_node = NodePath(".")
