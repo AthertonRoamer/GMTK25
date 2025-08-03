@@ -198,6 +198,15 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
+	# Play walking sound if moving
+	var is_moving = velocity.length() > 5.0 and not dying
+	if is_moving:
+		if not %walk_noise.playing:
+			%walk_noise.play()
+	else:
+		if %walk_noise.playing:
+			%walk_noise.stop()
+
 	
 func prepare_to_run_as_saved_player() -> void:
 	running_as_saved_player = true
@@ -228,6 +237,7 @@ func set_camera_active(cam_active : bool) -> void:
 
 func take_damage(dmg : float, _damage_type: String = "default") -> void:
 	health -= dmg
+	%damage_noise.play()
 
 
 func die() -> void:

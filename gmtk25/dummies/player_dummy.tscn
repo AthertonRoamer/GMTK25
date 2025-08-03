@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bs7prrmapuatg"]
+[gd_scene load_steps=8 format=3 uid="uid://bs7prrmapuatg"]
 
 [ext_resource type="Script" uid="uid://p8e60pldhd3q" path="res://dummies/player_dummy.gd" id="1_3r2or"]
 [ext_resource type="Texture2D" uid="uid://d0vyncuy087pt" path="res://assets/player_ss.png" id="1_m1q4l"]
+[ext_resource type="AudioStream" uid="uid://cbbcrhrlc3u47" path="res://sound/effects/hit-flesh-02-266309.mp3" id="3_ki5ph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3r2or"]
 size = Vector2(20, 44)
@@ -43,6 +44,7 @@ _data = {
 }
 
 [node name="player_dummy" type="StaticBody2D"]
+collision_layer = 2
 script = ExtResource("1_3r2or")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -80,6 +82,12 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 autostart = true
+
+[node name="death_noise" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_ki5ph")
+volume_db = 2.0
+autoplay = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="kill_timer" to="." method="_on_kill_timer_timeout"]
