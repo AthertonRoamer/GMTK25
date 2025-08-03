@@ -18,6 +18,8 @@ var max_health : int = 400
 @export var bullet_scene : PackedScene
 @export var range_circle_color : Color = Color(Color.DARK_RED, 0.3)
 
+@export var active : bool = true
+
 var health : float:
 
 	set(v):
@@ -49,6 +51,8 @@ func rotate_toward_direction(target_direction : Vector2, delta : float, rotation
 		current_direction = current_direction.rotated(rspeed * delta * rsign)
 
 func _physics_process(delta: float) -> void:
+	if not active:
+		return
 	assess_targets()
 	if is_instance_valid(target):
 		rotate_to_target(target,delta)
@@ -59,7 +63,7 @@ func shoot():
 	pass
 
 func rotate_to_target(ntarget, delta):
-	if position.distance_to(ntarget.position) > sight_range:
+	if global_position.distance_to(ntarget.global_position) > sight_range:
 		return
 	var dir = global_position.direction_to(ntarget.global_position)
 	rotate_toward_direction(dir,delta)
@@ -76,7 +80,7 @@ func get_closest_enemy(enemies : Array) -> Node2D:
 		return null
 	var closest_enemy : Node2D = enemies[0]
 	for e in enemies:
-		if position.distance_to(e.position) < position.distance_to(closest_enemy.position):
+		if global_position.distance_to(e.global_position) < global_position.distance_to(closest_enemy.global_position):
 			closest_enemy = e
 	return closest_enemy
 	
@@ -95,3 +99,7 @@ func die() -> void:
 	
 func _draw() -> void:
 	draw_circle(Vector2.ZERO, sight_range, range_circle_color, false, 2)
+	
+	
+func activate(_b : bool) -> void:
+	active = not active

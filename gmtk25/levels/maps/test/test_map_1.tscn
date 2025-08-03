@@ -75,7 +75,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAAHAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAA
 tile_set = SubResource("TileSet_18uf0")
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
-position = Vector2(128, 540)
+position = Vector2(558, 569)
 rotation = 0.0194352
 
 [node name="buttons" type="Node2D" parent="."]

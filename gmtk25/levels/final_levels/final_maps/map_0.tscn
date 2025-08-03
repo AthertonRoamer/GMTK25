@@ -1,0 +1,102 @@
+[gd_scene load_steps=12 format=4 uid="uid://dhv3sb80r3pwk"]
+
+[ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_i8hfv"]
+[ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_pxvvv"]
+[ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="3_ms73j"]
+[ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_pey0w"]
+[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="4_uux1f"]
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="5_74iq1"]
+[ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="6_j3pdq"]
+[ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="6_u71e0"]
+[ext_resource type="PackedScene" uid="uid://8ryhok2vhlcp" path="res://turret/laser_turret/laser_turret.tscn" id="10_rdmp8"]
+[ext_resource type="PackedScene" uid="uid://gfmjiblkd7jf" path="res://turret/turret.tscn" id="11_p2pio"]
+
+[sub_resource type="Environment" id="Environment_tb4ed"]
+background_mode = 3
+glow_enabled = true
+
+[node name="Map0" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_i8hfv")
+spawn_point = NodePath("map/SpawnPoint")
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
+environment = SubResource("Environment_tb4ed")
+
+[node name="ColorRect" type="ColorRect" parent="map"]
+offset_left = -536.0
+offset_top = -275.0
+offset_right = 1745.0
+offset_bottom = 1168.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" parent="map" instance=ExtResource("2_pxvvv")]
+tile_map_data = PackedByteArray("AAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAAAAAEAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAEAAQAAAAAAAEAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAACAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAEAAMAAAAHAAAAAAAFAAMAAAADAAAAAAAGAAMAAAADAAAAAAAHAAMAAAADAAAAAAAIAAMAAAADAAAAAAAJAAMAAAADAAAAAAAKAAMAAAADAAAAAAALAAMAAAADAAAAAAAMAAMAAAADAAAAAAANAAMAAAADAAAAAAARAAEAAAADAAAAAAAOAAEAAAAHAAAAAAAPAAEAAAADAAAAAAAQAAEAAAADAAAAAAASAAEAAAADAAAAAAATAAEAAAADAAAAAAAUAAEAAAAGAAAAAAASAAYAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAAFAAAAAAAUAAIAAAAEAAAAAAAUAAMAAAAEAAAAAAAUAAQAAAAEAAAAAAAUAAUAAAAEAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAUAAAAAAAAAAAA=")
+
+[node name="SpawnPoint" type="Node2D" parent="map"]
+position = Vector2(333, 254)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="map"]
+color = Color(0.783523, 0.783523, 0.783523, 1)
+
+[node name="VictoryArea" parent="map" instance=ExtResource("3_pey0w")]
+position = Vector2(1484, 261)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="button" parent="buttons" instance=ExtResource("3_ms73j")]
+position = Vector2(824.004, 259.999)
+rotation = 1.7665
+activation_mode = "Toggle"
+target_scene = NodePath("../../gates/gate1")
+
+[node name="wires" type="Node2D" parent="."]
+
+[node name="wires1" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(885, 265)
+rotation = -2.24686
+texture = ExtResource("4_uux1f")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="tutorial"]
+visible = false
+texture_filter = 1
+offset_left = 482.0
+offset_top = 291.0
+offset_right = 609.0
+offset_bottom = 416.0
+theme = ExtResource("5_74iq1")
+theme_override_font_sizes/font_size = 13
+text = "These are hold buttons. Use the timeloop to click both at once."
+autowrap_mode = 3
+
+[node name="gates" type="Node2D" parent="."]
+
+[node name="gate1" parent="gates" instance=ExtResource("6_u71e0")]
+position = Vector2(1338, 266)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="light" parent="lights" instance=ExtResource("6_j3pdq")]
+position = Vector2(1339, 164)
+rotation = -1.57932
+
+[node name="lasers" type="Node2D" parent="."]
+
+[node name="LaserTurret" parent="lasers" instance=ExtResource("10_rdmp8")]
+position = Vector2(1023, 274)
+
+[node name="turrets" type="Node2D" parent="."]
+
+[node name="Turret" parent="turrets" instance=ExtResource("11_p2pio")]
+position = Vector2(417, 242)
