@@ -47,6 +47,7 @@ func open_level(level_scene : PackedScene) -> void:
 	active_level = level
 	add_child(active_level)
 	opened_level.emit()
+	print("here")
 	
 	
 func close_active_level() -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmle8h1leo6fi"]
+[gd_scene load_steps=9 format=3 uid="uid://drdxuuqdtlylr"]
 
-[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="1_5hkij"]
-[ext_resource type="Script" uid="uid://wpycmc2fub2e" path="res://placeables/button.gd" id="2_bhl7q"]
-[ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="3_dccxg"]
+[ext_resource type="Script" uid="uid://bmnon4mqkcmh1" path="res://placeables/code_button/code_button.gd" id="1_1dia2"]
+[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_pgncj"]
+[ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="3_f4ly6"]
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="4_wtdqh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dccxg"]
 radius = 17.0294
@@ -68,13 +69,13 @@ _data = {
 &"glow": SubResource("Animation_bhl7q")
 }
 
-[node name="button" type="Area2D"]
+[node name="code_button" type="Area2D"]
 collision_mask = 3
-script = ExtResource("2_bhl7q")
+script = ExtResource("1_1dia2")
 
 [node name="button" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_5hkij")
+texture = ExtResource("2_pgncj")
 hframes = 8
 vframes = 3
 frame = 9
@@ -89,8 +90,23 @@ libraries = {
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.2
-texture = ExtResource("3_dccxg")
+texture = ExtResource("3_f4ly6")
 texture_scale = 0.5
+
+[node name="CodeInput" type="VBoxContainer" parent="."]
+offset_left = -63.0
+offset_top = 41.0
+offset_right = 63.0
+offset_bottom = 104.0
+theme = ExtResource("4_wtdqh")
+
+[node name="Enter Code" type="Label" parent="CodeInput"]
+layout_mode = 2
+text = "Enter Code"
+
+[node name="LineEdit" type="LineEdit" parent="CodeInput"]
+layout_mode = 2
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="text_changed" from="CodeInput/LineEdit" to="." method="_on_line_edit_text_changed"]

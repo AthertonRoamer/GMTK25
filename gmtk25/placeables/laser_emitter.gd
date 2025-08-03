@@ -25,3 +25,10 @@ func take_damage(damage : float, _damage_type : String = "none") -> void:
 
 func die() -> void:
 	queue_free()
+	
+	
+func activate(b : bool) -> void:
+	if b:
+		$laser.is_casting = false
+	else:
+		$laser.is_casting = true

@@ -1,0 +1,209 @@
+[gd_scene load_steps=13 format=4 uid="uid://dp5rjuy3drpwa"]
+
+[ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_320sr"]
+[ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_un0qh"]
+[ext_resource type="PackedScene" uid="uid://7ns33kcx0gu3" path="res://placeables/victory_area/victory_area.tscn" id="3_jyao2"]
+[ext_resource type="PackedScene" uid="uid://dmle8h1leo6fi" path="res://placeables/button.tscn" id="4_m7ldu"]
+[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="5_4kvk5"]
+[ext_resource type="PackedScene" uid="uid://drdxuuqdtlylr" path="res://placeables/code_button/code_button.tscn" id="5_un0qh"]
+[ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="6_rxixq"]
+[ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="7_xgj5m"]
+[ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="8_yoj4i"]
+[ext_resource type="PackedScene" uid="uid://blybn2ovwj2k2" path="res://placeables/laser_emitter.tscn" id="9_j426k"]
+[ext_resource type="PackedScene" uid="uid://dma268h46jek0" path="res://placeables/code_button/code_display.tscn" id="10_320sr"]
+
+[sub_resource type="Environment" id="Environment_tb4ed"]
+background_mode = 3
+glow_enabled = true
+
+[node name="Map0" type="Node2D" node_paths=PackedStringArray("spawn_point")]
+script = ExtResource("1_320sr")
+spawn_point = NodePath("map/SpawnPoint")
+
+[node name="map" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="map"]
+environment = SubResource("Environment_tb4ed")
+
+[node name="ColorRect" type="ColorRect" parent="map"]
+visible = false
+offset_left = -536.0
+offset_top = -275.0
+offset_right = 1745.0
+offset_bottom = 1168.0
+color = Color(0, 0, 0, 1)
+
+[node name="TileMapLayer" parent="map" instance=ExtResource("2_un0qh")]
+tile_map_data = PackedByteArray("AAARAAcAAAABAAAAAAARAAYAAAAAAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAABAAAAAAAPAAcAAAABAAAAAAAOAAcAAAAAAAEAAAAOAAQAAAACAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAAAAAAAAAAOAAMAAAACAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAARAAEAAAADAAAAAAAOAAEAAAAHAAAAAAAPAAEAAAADAAAAAAAQAAEAAAADAAAAAAASAAEAAAADAAAAAAATAAEAAAADAAAAAAAUAAEAAAADAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAAUAAIAAAAAAAAAAAAUAAMAAAAAAAAAAAAUAAQAAAAAAAAAAAAUAAUAAAAAAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAUAAAAAAAAAAAAVAAEAAAAGAAAAAAAVAAYAAAAAAAAAAAAVAAUAAAAEAAAAAAAVAAQAAAAEAAAAAAAVAAMAAQADAAAAAAAVAAIAAQADAAAAAAAWAAMAAQABAAAAAAAWAAIAAQABAAAAAAAWAAQAAAAAAAEAAAAWAAEAAAAHAAAAAAAXAAMAAAAAAAAAAAAXAAEAAAADAAAAAAAXAAIAAAAAAAAAAAAXAAQAAQAAAAAAAAAYAAEAAAAGAAAAAAAYAAIAAAAEAAAAAAAYAAMAAAAEAAAAAAAYAAQAAAAFAAAAAAAXAAUAAQACAAAAAAAYAAUAAAAGAAAAAAAWAAUAAAAHAAAAAAAYAAYAAAAEAAAAAAAYAAcAAAAFAAAAAAAXAAcAAAABAAAAAAAWAAcAAAAAAAEAAAASAAcAAAABAAAAAAATAAcAAAABAAAAAAAUAAcAAAABAAAAAAAVAAcAAAAFAAAAAAAXAAYAAAAAAAAAAAAWAAYAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAA=")
+
+[node name="SpawnPoint" type="Node2D" parent="map"]
+position = Vector2(1128, 471)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="map"]
+color = Color(0.783523, 0.783523, 0.783523, 1)
+
+[node name="VictoryArea" parent="map" instance=ExtResource("3_jyao2")]
+position = Vector2(1150, -69)
+scale = Vector2(1.5, 1.5)
+
+[node name="buttons" type="Node2D" parent="."]
+
+[node name="button" parent="buttons" instance=ExtResource("4_m7ldu")]
+position = Vector2(834, 162)
+rotation = 1.7665
+target_scene = NodePath("../../gates/gate2")
+target_paths = Array[NodePath]([NodePath("../../CodeDisplay")])
+
+[node name="button2" parent="buttons" instance=ExtResource("4_m7ldu")]
+position = Vector2(1500, 417)
+target_scene = NodePath("../../lasers/LaserEmitter")
+target_scene2 = NodePath("../../gates/gate1")
+
+[node name="code_button" parent="buttons" node_paths=PackedStringArray("code_display") instance=ExtResource("5_un0qh")]
+position = Vector2(1255, 427)
+target_scene = NodePath("../../gates/gate4")
+code_display = NodePath("../../CodeDisplay")
+
+[node name="wires" type="Node2D" parent="."]
+
+[node name="wires11" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1210, 124)
+rotation = -7.39849
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires19" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1330, 422)
+rotation = -8.60028
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires12" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1265, 154)
+rotation = -8.40071
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires13" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1349, 162)
+rotation = -8.40071
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires14" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1441, 167)
+rotation = -8.40071
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires15" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1486, 203)
+rotation = -10.1229
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires16" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1490, 277)
+rotation = -10.1229
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires17" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1494, 345)
+rotation = -10.1229
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires18" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(1461, 235)
+rotation = -11.1557
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="wires2" type="Sprite2D" parent="wires"]
+texture_filter = 1
+position = Vector2(860, 151)
+rotation = -5.12343
+texture = ExtResource("5_4kvk5")
+hframes = 8
+vframes = 3
+frame = 19
+
+[node name="tutorial" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="tutorial"]
+visible = false
+texture_filter = 1
+offset_left = 482.0
+offset_top = 291.0
+offset_right = 609.0
+offset_bottom = 416.0
+theme = ExtResource("6_rxixq")
+theme_override_font_sizes/font_size = 13
+text = "These are hold buttons. Use the timeloop to click both at once."
+autowrap_mode = 3
+
+[node name="gates" type="Node2D" parent="."]
+
+[node name="gate1" parent="gates" instance=ExtResource("7_xgj5m")]
+position = Vector2(1151, 68)
+scale = Vector2(1.5, 1.5)
+
+[node name="gate2" parent="gates" instance=ExtResource("7_xgj5m")]
+position = Vector2(901, 161)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+closed_by_default = false
+one_shot = true
+
+[node name="gate4" parent="gates" instance=ExtResource("7_xgj5m")]
+position = Vector2(1408, 412)
+rotation = 1.5708
+scale = Vector2(1.5, 1.5)
+
+[node name="lights" type="Node2D" parent="."]
+
+[node name="light" parent="lights" instance=ExtResource("8_yoj4i")]
+position = Vector2(1554, 74)
+rotation = -1.57932
+
+[node name="lasers" type="Node2D" parent="."]
+
+[node name="LaserEmitter" parent="lasers" instance=ExtResource("9_j426k")]
+position = Vector2(1437, 224)
+rotation = 3.14159
+
+[node name="turrets" type="Node2D" parent="."]
+
+[node name="CodeDisplay" parent="." instance=ExtResource("10_320sr")]
+offset_left = 589.0
+offset_top = 133.0
+offset_right = 679.0
+offset_bottom = 184.0

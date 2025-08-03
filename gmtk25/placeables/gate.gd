@@ -7,6 +7,8 @@ var activation_count: int = 0
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @export var closed_by_default : bool = true
 var is_open : bool = false
+@export var one_shot : bool = false
+var used_one_shot : bool = false
 
 func _ready() -> void:
 	if not closed_by_default:
@@ -27,9 +29,14 @@ func activate(is_active: bool):
 		activation_count = max(activation_count - 1, 0) # Optional: reduce count when deactivated
 
 	if activation_count >= required_activations:
-		set_door_to_default(false)
+		if not one_shot:
+			set_door_to_default(false)
+		elif not used_one_shot:
+			used_one_shot = true
+			set_door_to_default(false)
 	else:
-		set_door_to_default(true)
+		if not one_shot:
+			set_door_to_default(true)
 		
 		
 func set_door_to_default(default : bool) -> void:
