@@ -37,6 +37,10 @@ func _input(event : InputEvent) -> void:
 			close_pause_menu()
 		else:
 			open_pause_menu()
+	elif event.is_action_pressed("restart_hotkey"):
+		if pause_menu_open:
+			close_pause_menu()
+		Main.game.level_manager.reload_active_level()
 			
 			
 func close_pause_menu() -> void:

@@ -70,7 +70,9 @@ func rotate_to_target(ntarget, delta):
 	var dir = global_position.direction_to(ntarget.global_position)
 	rotate_toward_direction(dir,delta)
 	global_rotation = current_direction.angle()
-	shoot()
+	if abs(global_position.direction_to(target.global_position).angle_to(Vector2.RIGHT.rotated(rotation))) < PI/32:
+		shoot()
+		
 
 func assess_targets() -> void:
 	if not turret_area.get_visible_enemies().is_empty():

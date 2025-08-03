@@ -139,6 +139,7 @@ func end_loop() -> void:
 	if current_loop == loops_allowed:
 		final_loop_ended.emit()
 		
+		
 func submit_input_record(record : InputRecord) -> void:
 	if player_input_records.size() == record.loop_index - 1:
 		#if player_input_records.is_empty():
@@ -182,5 +183,6 @@ func _input(event : InputEvent) -> void:
 	if skip_to_end_of_loop_enabled and event.is_action_pressed("skip_to_end_of_loop"):
 		if loop_progressing:
 			end_loop()
+			run_next_loop()
 		
 		

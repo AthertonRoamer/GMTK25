@@ -7,6 +7,12 @@ signal dummy_release_camera
 #func _ready() -> void:
 	#$Camera2D.enabled = true
 	
+var past_self : bool = false
+
+func _ready() -> void:
+	if past_self:
+		modulate = Color(Color.WHITE, 0.5)
+	
 	
 func _on_kill_timer_timeout() -> void:
 	die()

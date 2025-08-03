@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://baaluob8u3ca0"]
+[gd_scene load_steps=12 format=3 uid="uid://baaluob8u3ca0"]
 
 [ext_resource type="Script" uid="uid://28c51q8pnt3d" path="res://framework/game/game.gd" id="1_hica5"]
 [ext_resource type="PackedScene" uid="uid://cw01qeyxavh32" path="res://framework/game/level_system/level_menu/level_menu.tscn" id="2_2ckys"]
@@ -7,13 +7,11 @@
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="3_flr8x"]
 [ext_resource type="PackedScene" uid="uid://bo7ahqq7i826s" path="res://levels/final_levels/level_1.tscn" id="5_1qalo"]
 [ext_resource type="PackedScene" uid="uid://bhevx710242st" path="res://levels/final_levels/level_3.tscn" id="5_10ul7"]
-[ext_resource type="PackedScene" uid="uid://bq262l1or6oyu" path="res://levels/test/test_level_1.tscn" id="5_h6l0g"]
+[ext_resource type="PackedScene" uid="uid://dlu4473vj646i" path="res://levels/test/test_level_2.tscn" id="6_flr8x"]
 
-
-[sub_resource type="Resource" id="Resource_1qalo"]
-
+[sub_resource type="Resource" id="Resource_xqitx"]
 script = ExtResource("3_edldn")
-level_scene = ExtResource("5_h6l0g")
+level_scene = ExtResource("6_flr8x")
 included_in_menu = true
 level_name = ""
 metadata/_custom_type_script = "uid://tidjdpqv0mrg"
@@ -21,7 +19,6 @@ metadata/_custom_type_script = "uid://tidjdpqv0mrg"
 [sub_resource type="Resource" id="Resource_y8b25"]
 script = ExtResource("3_edldn")
 level_scene = ExtResource("5_1qalo")
-
 included_in_menu = true
 level_name = ""
 metadata/_custom_type_script = "uid://tidjdpqv0mrg"
@@ -33,15 +30,9 @@ included_in_menu = true
 level_name = ""
 metadata/_custom_type_script = "uid://tidjdpqv0mrg"
 
-[sub_resource type="Resource" id="Resource_1qalo"]
-script = ExtResource("3_edldn")
-level_scene = ExtResource("5_h6l0g")
-included_in_menu = true
-level_name = ""
-metadata/_custom_type_script = "uid://tidjdpqv0mrg"
-
 [node name="Game" type="Node"]
 script = ExtResource("1_hica5")
+level_menu_enabled = true
 
 [node name="LevelMenu" parent="." instance=ExtResource("2_2ckys")]
 theme = ExtResource("3_flr8x")
@@ -49,6 +40,4 @@ theme = ExtResource("3_flr8x")
 [node name="LevelManager" type="Node" parent="."]
 script = ExtResource("2_erbt7")
 open_level_on_load = false
-
-level_list = Array[ExtResource("3_edldn")]([SubResource("Resource_1qalo"), SubResource("Resource_y8b25"), SubResource("Resource_flr8x")])
-
+level_list = Array[ExtResource("3_edldn")]([SubResource("Resource_xqitx"), SubResource("Resource_y8b25"), SubResource("Resource_flr8x")])

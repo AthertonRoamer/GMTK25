@@ -12,8 +12,8 @@ func _ready() -> void:
 	Main.level.loop_manager.saved_player_handler.resolved_to_replay.connect(_on_resolved_to_replay)
 	Main.level.loop_manager.saved_player_handler.resolved_to_finish_loop.connect(_on_resolved_to_finish_loop)
 	Pause.true_pause.connect(_on_pause_announced)
-	Main.game.level_manager.opened_level.connect(_on_level_opened)
-	Main.game.level_manager.closed_level.connect(_on_level_opened)
+	#Main.game.level_manager.opened_level.connect(_on_level_opened)
+	#Main.game.level_manager.closed_level.connect(_on_level_opened)
 	
 	
 func _on_resolved_to_begin_saved_run(data : SavedPlayerRunData) -> void:

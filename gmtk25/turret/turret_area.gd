@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func get_visible_enemies() -> Array:
-	return get_overlapping_bodies().filter(func(body): return body.is_in_group("player") and can_hit(body))
+	return get_overlapping_bodies().filter(func(body): return body.is_in_group("player") and can_hit(body) and not body.is_in_group("dummy"))
 	
 	
 func can_hit(body : Node2D) -> bool:
