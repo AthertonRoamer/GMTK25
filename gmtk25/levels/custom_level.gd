@@ -1,7 +1,7 @@
 class_name CustomLevel
 extends Level
 
-@export var time_travel : bool = true
+@export var time_travel : bool = false
 @export var auto_load_children : bool = true
 @export var skip_to_end_of_loop_enabed : bool = true
 @export_group("Loop")

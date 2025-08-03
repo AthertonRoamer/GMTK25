@@ -48,6 +48,7 @@ var health = starting_health:
 			queue_die()
 		else:
 			health = v
+		health_changed.emit(v)
 	
 			
 var should_walk_up : bool = false:
@@ -256,6 +257,8 @@ func die() -> void:
 	var dummy : PlayerDummy = dummy_body_scene.instantiate()
 	dummy.position = position
 	dummy.rotation = rotation
+	if not current:
+		dummy.past_self = true
 	Main.level.get_map().call_deferred("add_child", dummy)
 	died.emit(dummy)
 	active = false

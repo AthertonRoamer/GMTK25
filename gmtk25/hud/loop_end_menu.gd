@@ -3,10 +3,15 @@ extends Control
 func _ready() -> void:
 	visible = false
 	Main.level.loop_manager.loop_ended.connect(_on_loop_ended)
+	Main.level.loop_manager.loop_began.connect(_on_loop_began)
 	
 	
 func _on_loop_ended() -> void:
 	visible = true
+	
+	
+func _on_loop_began() -> void:
+	visible = false
 	
 	
 func _on_button_pressed() -> void:
