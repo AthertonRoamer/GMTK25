@@ -24,6 +24,7 @@ var map : Map
 var current_player : Player
 
 var saved_player_handler : SavedPlayerHandler
+var skip_to_end_of_loop_enabled : bool = true
 
 func _ready() -> void:
 	if get_parent() is CustomLevel:
@@ -175,5 +176,11 @@ func get_input_record_from_loop(loop_number : int) -> InputRecord:
 	else:
 		push_warning("Get input record from loop called when loop manager didnt have said record")
 		return null
+		
+		
+func _input(event : InputEvent) -> void:
+	if skip_to_end_of_loop_enabled and event.is_action_pressed("skip_to_end_of_loop"):
+		if loop_progressing:
+			end_loop()
 		
 		

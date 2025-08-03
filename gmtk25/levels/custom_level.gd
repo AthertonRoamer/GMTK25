@@ -3,6 +3,7 @@ extends Level
 
 @export var time_travel : bool = true
 @export var auto_load_children : bool = true
+@export var skip_to_end_of_loop_enabed : bool = true
 @export_group("Loop")
 @export var loop_time : float = 5 #seconds
 @export var loops_allowed : float = 3
@@ -31,6 +32,8 @@ func _ready() -> void:
 		add_child(loop_manager)
 		if not time_travel:
 			loop_manager.saved_player_handler.enabled = false
+		if not skip_to_end_of_loop_enabed:
+			loop_manager.skip_to_end_of_loop_enabled = false
 		var hud_layer = hud_layer_scene.instantiate()
 		add_child(hud_layer)
 		hud = hud_layer.get_child(0)
