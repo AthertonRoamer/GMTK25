@@ -26,17 +26,17 @@ spawn_point = NodePath("map/SpawnPoint")
 environment = SubResource("Environment_tb4ed")
 
 [node name="ColorRect" type="ColorRect" parent="map"]
-offset_left = -536.0
-offset_top = -275.0
-offset_right = 1745.0
-offset_bottom = 1168.0
+offset_left = -209.0
+offset_top = -279.0
+offset_right = 2072.0
+offset_bottom = 1164.0
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" parent="map" instance=ExtResource("2_siayu")]
 tile_map_data = PackedByteArray("AAARAAYAAAABAAAAAAARAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAOAAUAAAACAAAAAAAOAAYAAAAAAAEAAAAPAAYAAAABAAAAAAAQAAYAAAABAAAAAAAEAAQAAAAAAAEAAAAFAAQAAAABAAAAAAAGAAQAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAABAAAAAAALAAQAAAABAAAAAAAMAAQAAAABAAAAAAANAAQAAAABAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAOAAIAAAACAAAAAAAOAAMAAAAAAAAAAAAPAAIAAAAAAAAAAAAPAAMAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAIAAAAAAAAAAAARAAMAAAAAAAAAAAARAAQAAAAAAAAAAAAEAAMAAAAHAAAAAAAFAAMAAAADAAAAAAAGAAMAAAADAAAAAAAHAAMAAAADAAAAAAAIAAMAAAADAAAAAAAJAAMAAAADAAAAAAAKAAMAAAADAAAAAAALAAMAAAADAAAAAAAMAAMAAAADAAAAAAANAAMAAAADAAAAAAARAAEAAAADAAAAAAAOAAEAAAAHAAAAAAAPAAEAAAADAAAAAAAQAAEAAAADAAAAAAASAAEAAAADAAAAAAATAAEAAAADAAAAAAAUAAEAAAAGAAAAAAASAAYAAAABAAAAAAATAAYAAAABAAAAAAAUAAYAAAAFAAAAAAAUAAIAAAAEAAAAAAAUAAMAAAAEAAAAAAAUAAQAAAAEAAAAAAAUAAUAAAAEAAAAAAASAAUAAAAAAAAAAAASAAQAAAAAAAAAAAASAAMAAAAAAAAAAAASAAIAAAAAAAAAAAATAAQAAAAAAAAAAAATAAMAAAAAAAAAAAATAAIAAAAAAAAAAAATAAUAAAAAAAAAAAA=")
 
 [node name="SpawnPoint" type="Node2D" parent="map"]
-position = Vector2(1056, 609)
+position = Vector2(302, 258)
 
 [node name="buttons" type="Node2D" parent="."]
 position = Vector2(-287, -1441)
@@ -373,36 +373,44 @@ position = Vector2(83, -1798)
 [node name="Turret" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(493, 2053)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret2" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(941, 1924)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret3" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(942, 2183)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret4" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1067, 2184)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret5" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1200, 2180)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret6" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1198, 1925)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="Turret7" parent="lasers" instance=ExtResource("11_siayu")]
 position = Vector2(1069, 1927)
 scale = Vector2(1.5, 1.5)
+sight_range = 100.0
 
 [node name="LaserEmitter" parent="lasers" instance=ExtResource("9_5jsn7")]
-position = Vector2(605, 1067)
+position = Vector2(826, 1976)
 
 [node name="LaserTurret" parent="." instance=ExtResource("10_b5ngs")]
 position = Vector2(567, -798)
+sight_range = 100.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tb4ed")
