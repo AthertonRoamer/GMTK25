@@ -20,6 +20,8 @@ func _on_final_loop_ended() -> void:
 	
 	
 func _on_restart_pressed() -> void:
+	$"../SavedRunDisplay".waiting_for_true_pause_to_end = false
+	$"../SavedRunDisplay".visible = false
 	close_pause_menu()
 	Main.game.level_manager.reload_active_level()
 
@@ -38,12 +40,14 @@ func _input(event : InputEvent) -> void:
 			
 			
 func close_pause_menu() -> void:
+	Pause.announce_pause(false)
 	pause_menu_open = false
 	visible = false
 	get_tree().paused = false
 	
 	
 func open_pause_menu() -> void:
+	Pause.announce_pause(true)
 	pause_menu_open = true
 	visible = true
 	get_tree().paused = true

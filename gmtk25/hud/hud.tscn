@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://jx28hx4fcuuq"]
+[gd_scene load_steps=13 format=3 uid="uid://jx28hx4fcuuq"]
 
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_1kkc0"]
 [ext_resource type="Script" uid="uid://b6buj4th6fl2v" path="res://hud/hud.gd" id="1_6ca3a"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://xqujk8t6gakq" path="res://hud/post_death_pause_phase_alert.gd" id="8_1kkc0"]
 [ext_resource type="Script" uid="uid://bqh2rtncb2y6c" path="res://hud/victory_display.gd" id="9_qv4qp"]
 [ext_resource type="Script" uid="uid://budcqd4i4o614" path="res://hud/saved_run_display.gd" id="11_gms7k"]
+[ext_resource type="Script" uid="uid://b37vqq8cqjere" path="res://hud/player_health_display.gd" id="12_hwufu"]
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("alert_manager")]
 layout_mode = 3
@@ -255,6 +256,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 text = "Space to Continue"
+
+[node name="PlayerHealthDisplay" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 20.0
+show_percentage = false
+script = ExtResource("12_hwufu")
 
 [connection signal="pressed" from="LoopEndMenu/VBoxContainer/Button" to="LoopEndMenu" method="_on_button_pressed"]
 [connection signal="pause_menu_open_changed" from="PauseMenu" to="LoopEndMenu" method="_on_pause_menu_pause_menu_open_changed"]

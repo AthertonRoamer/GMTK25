@@ -6,7 +6,7 @@ extends Level
 @export var skip_to_end_of_loop_enabed : bool = true
 @export_group("Loop")
 @export var loop_time : float = 5 #seconds
-@export var loops_allowed : float = 3
+@export var loops_allowed : int = 3
 
 
 @export_group("Map")

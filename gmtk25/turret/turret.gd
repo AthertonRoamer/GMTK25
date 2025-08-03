@@ -60,7 +60,8 @@ func _physics_process(delta: float) -> void:
 
 func shoot():
 	$gun.fire()
-	$gun2.fire()
+	if get_node_or_null("gun2"):
+		$gun2.fire()
 	pass
 
 func rotate_to_target(ntarget, delta):

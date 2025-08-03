@@ -47,13 +47,16 @@ func set_door_to_default(default : bool) -> void:
 		
 func open() -> void:
 	#print("open")
-	collision_shape.set_deferred("disabled", true)
-	animation_player.play("open")
-	is_open = true
+	if not is_open:
+		collision_shape.set_deferred("disabled", true)
+		animation_player.play("open")
+		is_open = true
+
 		
 		
 func close() -> void:
 	#print("close")
-	collision_shape.set_deferred("disabled", false)
-	animation_player.play("close")
-	is_open = false
+	if is_open:
+		collision_shape.set_deferred("disabled", false)
+		animation_player.play("close")
+		is_open = false

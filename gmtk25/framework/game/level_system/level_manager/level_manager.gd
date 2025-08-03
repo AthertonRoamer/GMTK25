@@ -1,6 +1,9 @@
 class_name LevelManager
 extends Node
 
+signal opened_level
+signal closed_level
+
 @export var open_level_on_load : bool = true
 @export var level_list : Array[LevelData]
 
@@ -43,12 +46,14 @@ func open_level(level_scene : PackedScene) -> void:
 	active_level_scene = level_scene
 	active_level = level
 	add_child(active_level)
+	opened_level.emit()
 	
 	
 func close_active_level() -> void:
 	if is_instance_valid(active_level):
 		active_level.queue_free()
 	active_level = null
+	closed_level.emit()
 	
 	
 func reload_active_level() -> void:
