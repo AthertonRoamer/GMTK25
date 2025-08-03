@@ -14,8 +14,7 @@ func _ready() -> void:
 	if get_parent() is Turret:
 		get_parent().turret_area = self
 		turret = get_parent()
-	else:
-		push_warning("Ship area is a child of a non-ship")
+
 
 func get_visible_enemies() -> Array:
 	return get_overlapping_bodies().filter(func(body): return body.is_in_group("player") and can_hit(body))

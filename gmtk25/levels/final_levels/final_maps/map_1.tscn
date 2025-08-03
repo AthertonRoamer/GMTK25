@@ -1,7 +1,4 @@
-
-[gd_scene load_steps=11 format=4 uid="uid://150gcrgpxiu4"]
-
-
+[gd_scene load_steps=12 format=4 uid="uid://150gcrgpxiu4"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_0q438"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_vx0yd"]
@@ -260,10 +257,8 @@ scale = Vector2(1.5, 1.5)
 required_activations = 2
 
 [node name="shadow" parent="gates" instance=ExtResource("5_4ul2f")]
-
 visible = false
 offset_left = 414.0
-
 offset_top = 108.0
 offset_right = 896.0
 offset_bottom = 669.0
