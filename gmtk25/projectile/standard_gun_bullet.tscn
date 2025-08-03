@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://jnajxsxwxoer"]
+[gd_scene load_steps=20 format=3 uid="uid://jnajxsxwxoer"]
 
 [ext_resource type="Script" uid="uid://dbw3wa6fmav0i" path="res://projectile/standard_gun_bullet.gd" id="1_2w5qf"]
 [ext_resource type="Texture2D" uid="uid://bkjc81nmv486g" path="res://assets/Projectiles.png" id="2_4ccqb"]
 [ext_resource type="AudioStream" uid="uid://cq6opuquh05xd" path="res://sound/effects/laser-45816.mp3" id="3_4ccqb"]
+[ext_resource type="AudioStream" uid="uid://c4tb16ggkn5r8" path="res://sound/effects/metal-hit-97-200427.mp3" id="4_onsuw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_daedc"]
 radius = 3.0
@@ -22,6 +23,7 @@ point_count = 2
 curve = SubResource("Curve_n0d7x")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1brg8"]
+resource_local_to_scene = true
 particle_flag_disable_z = true
 direction = Vector3(-1, 0, 0)
 spread = 2.528
@@ -62,6 +64,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hit_noise:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_y67cr"]
 resource_name = "blow up"
@@ -89,6 +103,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hit_noise:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xhjti"]
@@ -131,7 +157,7 @@ scale = Vector2(0.75, 0.75)
 collision_layer = 0
 collision_mask = 7
 script = ExtResource("1_2w5qf")
-speed = 1600.0
+speed = 1000.0
 damage = 100
 extinguish_on_impact = true
 extinguish_on_effect_body = true
@@ -158,10 +184,11 @@ shape = SubResource("CapsuleShape2D_daedc")
 visible = false
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_g0ebo")
-position = Vector2(-12, 0)
+position = Vector2(0, -16)
 amount = 32
 texture = ExtResource("2_4ccqb")
 lifetime = 0.3
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_1brg8")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -199,5 +226,9 @@ collision_mask = 7
 stream = ExtResource("3_4ccqb")
 autoplay = true
 max_distance = 500.0
+
+[node name="hit_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_onsuw")
+volume_db = -25.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

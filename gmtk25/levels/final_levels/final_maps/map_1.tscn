@@ -201,12 +201,23 @@ theme_override_font_sizes/font_size = 13
 text = "These are hold buttons. Use the timeloop to click both at once."
 autowrap_mode = 3
 
+[node name="Label5" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 899.0
+offset_top = 387.0
+offset_right = 1021.0
+offset_bottom = 532.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "Click mouse to shoot gun. Beware of shooting yourself in the past or future..."
+autowrap_mode = 3
+
 [node name="Label2" type="Label" parent="tutorial"]
 texture_filter = 1
-offset_left = 1186.0
-offset_top = 186.0
-offset_right = 1291.0
-offset_bottom = 271.0
+offset_left = 1231.0
+offset_top = 161.0
+offset_right = 1336.0
+offset_bottom = 246.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
 text = "Walk over the button to activate the gate."
@@ -214,21 +225,32 @@ autowrap_mode = 3
 
 [node name="Label3" type="Label" parent="tutorial"]
 texture_filter = 1
-offset_left = 1061.0
-offset_top = 658.0
-offset_right = 1166.0
-offset_bottom = 743.0
+offset_left = 1235.0
+offset_top = 451.0
+offset_right = 1340.0
+offset_bottom = 536.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
 text = "Time will loop 3 times this level. "
 autowrap_mode = 3
 
+[node name="Label6" type="Label" parent="tutorial"]
+texture_filter = 1
+offset_left = 1235.0
+offset_top = 356.0
+offset_right = 1340.0
+offset_bottom = 441.0
+theme = ExtResource("8_nbnlt")
+theme_override_font_sizes/font_size = 13
+text = "To restart level, hit ESC then restart."
+autowrap_mode = 3
+
 [node name="Label4" type="Label" parent="tutorial"]
 texture_filter = 1
-offset_left = 1231.0
-offset_top = 351.0
-offset_right = 1336.0
-offset_bottom = 436.0
+offset_left = 1232.0
+offset_top = 260.0
+offset_right = 1337.0
+offset_bottom = 345.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
 text = "To skip to the next loop, hit 'F'."

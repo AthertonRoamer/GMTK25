@@ -4,5 +4,4 @@
 
 [node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_2v3iu")
-loop_time = 10.0
-loops_allowed = 4.0
+loop_time = 35.0
