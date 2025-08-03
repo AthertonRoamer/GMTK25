@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://im8asa4k1183"]
+
+[ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="1_3l6ve"]
+[ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="2_m5j7a"]
+
+[node name="light" type="Sprite2D"]
+texture_filter = 1
+rotation = 4.70387
+scale = Vector2(2, 2)
+texture = ExtResource("1_3l6ve")
+hframes = 8
+vframes = 3
+frame = 16
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.0987, -0.0778604)
+rotation = -1.57008
+scale = Vector2(6.12913, 3.55555)
+color = Color(1, 0, 0, 1)
+energy = 2.52
+texture = ExtResource("2_m5j7a")
+texture_scale = 0.1

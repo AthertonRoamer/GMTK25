@@ -5,7 +5,11 @@ var activation_count: int = 0
 
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-var open : bool = false
+@export var open : bool = false
+
+#func _ready() -> void:
+	#if open:
+		#
 
 func activate(is_active: bool):
 	print("door activated")
