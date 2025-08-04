@@ -6,5 +6,5 @@
 [node name="TestLevel1" type="Node2D"]
 script = ExtResource("1_jub2x")
 time_travel = true
-loop_time = 20.0
+loop_time = 45.0
 map_scene = ExtResource("2_jub2x")

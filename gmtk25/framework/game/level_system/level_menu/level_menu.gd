@@ -12,11 +12,13 @@ func _ready() -> void:
 
 func activate() -> void:
 	visible = true
+	$AudioStreamPlayer2D.play()
 
 	
 	
 func deactivate() -> void:
 	visible = false
+	$AudioStreamPlayer2D.stop()
 
 
 

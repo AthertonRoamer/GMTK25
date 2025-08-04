@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://chu68asm3gk6r"
+path="res://.godot/imported/Echoes Through the Void.mp3-ef5c296b342f3925cd7c52a7909af5f5.mp3str"
+
+[deps]
+
+source_file="res://sound/music/Echoes Through the Void.mp3"
+dest_files=["res://.godot/imported/Echoes Through the Void.mp3-ef5c296b342f3925cd7c52a7909af5f5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

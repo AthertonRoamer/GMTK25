@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bbwnuf0gnfqsl"]
+[gd_scene load_steps=12 format=4 uid="uid://bbwnuf0gnfqsl"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_s8ebx"]
 [ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_xftw7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bdu561h11ipkb" path="res://placeables/gate.tscn" id="7_gebc2"]
 [ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="8_ihbvh"]
 [ext_resource type="PackedScene" uid="uid://gfmjiblkd7jf" path="res://turret/turret.tscn" id="10_3pmv4"]
+[ext_resource type="AudioStream" uid="uid://bf4361nrxkotp" path="res://sound/music/Rocket's Roar.mp3" id="10_s8ebx"]
 
 [sub_resource type="Environment" id="Environment_tb4ed"]
 background_mode = 3
@@ -158,3 +159,7 @@ rotation = 0.971192
 [node name="Turret3" parent="turrets" instance=ExtResource("10_3pmv4")]
 position = Vector2(546, 441)
 rotation = -0.520161
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_s8ebx")
+autoplay = true

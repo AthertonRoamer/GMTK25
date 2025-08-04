@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://cwsnjtqbugh5m"]
 
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="1_8x3on"]
-[ext_resource type="AudioStream" uid="uid://dwh7ptbx58mq3" path="res://sound/Interstellar Reverie.mp3" id="2_06rvy"]
 [ext_resource type="Script" uid="uid://csl2sqejls3gp" path="res://framework/menu/main_menu.gd" id="2_7fn7a"]
+[ext_resource type="AudioStream" uid="uid://jvby7c2x30e1" path="res://sound/music/intro.mp3" id="3_7fn7a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modkm"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -231,7 +231,7 @@ _data = {
 background_mode = 3
 glow_enabled = true
 glow_intensity = 2.0
-glow_bloom = 0.12
+glow_bloom = 0.04
 glow_blend_mode = 0
 glow_hdr_threshold = 0.8
 
@@ -246,7 +246,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_8x3on")
 script = ExtResource("2_7fn7a")
-skip_loading_screen = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -302,7 +301,8 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_06rvy")
+stream = ExtResource("3_7fn7a")
+volume_db = 5.0
 autoplay = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

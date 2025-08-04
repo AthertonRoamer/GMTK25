@@ -100,3 +100,5 @@ position = Vector2(1023, 274)
 
 [node name="Turret" parent="turrets" instance=ExtResource("10_okmct")]
 position = Vector2(417, 242)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

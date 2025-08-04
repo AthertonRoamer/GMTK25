@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://dtnj40l8qhd0n"]
+[gd_scene load_steps=13 format=4 uid="uid://dtnj40l8qhd0n"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_h7odv"]
 [ext_resource type="PackedScene" uid="uid://ct5drbsyg12c7" path="res://placeables/tile_map_layer.tscn" id="2_4jldh"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://im8asa4k1183" path="res://placeables/light/light.tscn" id="8_eqwuk"]
 [ext_resource type="PackedScene" uid="uid://blybn2ovwj2k2" path="res://placeables/laser_emitter.tscn" id="9_h7odv"]
 [ext_resource type="PackedScene" uid="uid://gfmjiblkd7jf" path="res://turret/turret.tscn" id="10_hm37h"]
+[ext_resource type="AudioStream" uid="uid://bf4361nrxkotp" path="res://sound/music/Rocket's Roar.mp3" id="11_4jldh"]
 
 [sub_resource type="Environment" id="Environment_tb4ed"]
 background_mode = 3
@@ -90,7 +91,23 @@ position = Vector2(606, 384)
 [node name="lights" type="Node2D" parent="."]
 
 [node name="light" parent="lights" instance=ExtResource("8_eqwuk")]
-position = Vector2(1339, 164)
+position = Vector2(713, 379)
+rotation = -1.57932
+
+[node name="light2" parent="lights" instance=ExtResource("8_eqwuk")]
+position = Vector2(464, 633)
+rotation = -1.57932
+
+[node name="light3" parent="lights" instance=ExtResource("8_eqwuk")]
+position = Vector2(389, 503)
+rotation = -1.57932
+
+[node name="light4" parent="lights" instance=ExtResource("8_eqwuk")]
+position = Vector2(1018, 352)
+rotation = -1.57932
+
+[node name="light5" parent="lights" instance=ExtResource("8_eqwuk")]
+position = Vector2(760, 632)
 rotation = -1.57932
 
 [node name="lasers" type="Node2D" parent="."]
@@ -113,3 +130,6 @@ position = Vector2(437, 438)
 
 [node name="Turret3" parent="turrets" instance=ExtResource("10_hm37h")]
 position = Vector2(600, 604)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_4jldh")

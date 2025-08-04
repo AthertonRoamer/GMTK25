@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://150gcrgpxiu4"]
+[gd_scene load_steps=13 format=4 uid="uid://150gcrgpxiu4"]
 
 [ext_resource type="Script" uid="uid://dh8cgj4q5fykr" path="res://levels/final_levels/final_maps/map_1.gd" id="1_0q438"]
 [ext_resource type="Texture2D" uid="uid://bboyu1qx65be4" path="res://assets/tiles_ss.png" id="2_vx0yd"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bg4xyghehcp7w" path="res://placeables/shadow.tscn" id="5_4ul2f"]
 [ext_resource type="Texture2D" uid="uid://ci3u237pksydm" path="res://assets/light.png" id="5_c3jmf"]
 [ext_resource type="Theme" uid="uid://ctdduf6tq2qx6" path="res://assets/BOETHIUS_THEME.tres" id="8_nbnlt"]
+[ext_resource type="AudioStream" uid="uid://chu68asm3gk6r" path="res://sound/music/Echoes Through the Void.mp3" id="9_c3jmf"]
 
 [sub_resource type="Environment" id="Environment_tb4ed"]
 background_mode = 3
@@ -242,7 +243,7 @@ offset_right = 1340.0
 offset_bottom = 441.0
 theme = ExtResource("8_nbnlt")
 theme_override_font_sizes/font_size = 13
-text = "To restart level, hit ESC then restart."
+text = "To restart level, hit 'R'."
 autowrap_mode = 3
 
 [node name="Label4" type="Label" parent="tutorial"]
@@ -387,3 +388,8 @@ environment = SubResource("Environment_tb4ed")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.783523, 0.783523, 0.783523, 1)
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_c3jmf")
+volume_db = -4.952
+autoplay = true

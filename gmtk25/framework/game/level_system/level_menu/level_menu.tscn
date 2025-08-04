@@ -1,9 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw01qeyxavh32"]
+[gd_scene load_steps=5 format=3 uid="uid://cw01qeyxavh32"]
 
 [ext_resource type="Script" uid="uid://dk5k6e7ba5dd0" path="res://framework/game/level_system/level_menu/level_menu.gd" id="1_bkd8b"]
+[ext_resource type="AudioStream" uid="uid://d2d8rww2d68ha" path="res://sound/music/Fate of the Stars.mp3" id="3_ensb6"]
 [ext_resource type="PackedScene" uid="uid://br35jxvmepdrn" path="res://framework/game/level_system/level_menu/level_button/level_button.tscn" id="3_gtk5a"]
 
+[sub_resource type="Environment" id="Environment_1m4rj"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.03
+glow_blend_mode = 0
+
 [node name="LevelMenu" type="Control" node_paths=PackedStringArray("button_holder")]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,3 +64,10 @@ size_flags_stretch_ratio = 4.0
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
 columns = 5
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1m4rj")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ensb6")
+autoplay = true
