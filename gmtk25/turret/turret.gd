@@ -53,7 +53,7 @@ func rotate_toward_direction(target_direction : Vector2, delta : float, rotation
 func _physics_process(delta: float) -> void:
 	if not active:
 		return
-	assess_targets()
+	target = get_closest_enemy(turret_area.get_visible_enemies())
 	if is_instance_valid(target):
 		rotate_to_target(target,delta)
 
@@ -72,11 +72,6 @@ func rotate_to_target(ntarget, delta):
 	global_rotation = current_direction.angle()
 	if abs(global_position.direction_to(target.global_position).angle_to(Vector2.RIGHT.rotated(rotation))) < PI/32:
 		shoot()
-		
-
-func assess_targets() -> void:
-	if not turret_area.get_visible_enemies().is_empty():
-		target = get_closest_enemy(turret_area.get_visible_enemies())
 		
 		
 func get_closest_enemy(enemies : Array) -> Node2D:

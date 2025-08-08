@@ -7,6 +7,7 @@ var level : CustomLevel
 
 var active : bool = true #moving or listening for input
 var current : bool = true #if not current its a past-self
+var reincarnate_once_current_player : bool = false
 var awaiting_saved_run_completion : bool = false
 var running_as_saved_player : bool = false
 
@@ -75,7 +76,7 @@ func _ready() -> void:
 	#px / (px/sec) = sec
 	if current:
 		input_record = InputRecord.new()
-		input_record.loop_index = Main.level.loop_manager.current_loop
+		input_record.loop_index = level.loop_manager.current_loop
 		set_visuals_as_current_player(true)
 	else:
 		set_visuals_as_current_player(false)
@@ -140,7 +141,7 @@ func _physics_process(delta: float) -> void:
 	
 	#handle input
 	var current_input_actions : Array[InputAction] = [] #the array to be populated with input data
-	var frame_index : int = Main.level.loop_manager.frame_index
+	var frame_index : int = level.loop_manager.frame_index
 	
 	if current: #receive natural input
 		#take input and make into input actions
@@ -164,7 +165,7 @@ func _physics_process(delta: float) -> void:
 			input_record_read_index += 1
 		if frame_index == input_record.death_frame + 1:
 			print("Past self has been saved")
-			Main.level.loop_manager.saved_player_handler.submit_saved_player(self, input_record)
+			level.loop_manager.saved_player_handler.submit_saved_player(self, input_record)
 		
 		
 	#process input
@@ -251,27 +252,37 @@ func die() -> void:
 	if death_accomplished:
 		return
 	if current: 
-		input_record.death_frame = Main.level.loop_manager.frame_index
-		input_record.seconds_remaining_at_death = Main.level.loop_manager.current_loop_time
+		#calm input record
+		var buffer_input_actions : Array[InputAction] = []
+		buffer_input_actions.append(InputActionKeyChange.new("walk_up", level.loop_manager.frame_index))
+		buffer_input_actions.append(InputActionKeyChange.new("walk_down", level.loop_manager.frame_index))
+		buffer_input_actions.append(InputActionKeyChange.new("walk_right", level.loop_manager.frame_index))
+		buffer_input_actions.append(InputActionKeyChange.new("walk_left", level.loop_manager.frame_index))
+		input_record.input_action_list.append_array(buffer_input_actions)
+		input_record.death_frame = level.loop_manager.frame_index
+		input_record.seconds_remaining_at_death = level.loop_manager.current_loop_time
 	dying = true
 	var dummy : PlayerDummy = dummy_body_scene.instantiate()
 	dummy.position = position
 	dummy.rotation = rotation
-	if not current:
+	if not current and not reincarnate_once_current_player:
 		dummy.past_self = true
-	Main.level.get_map().call_deferred("add_child", dummy)
+	level.get_map().call_deferred("add_child", dummy)
 	died.emit(dummy)
 	active = false
 	death_accomplished = true
 	$QueueFreeTimer.start()
 
+
 func _exit_tree() -> void:
 	if current:
 		if running_as_saved_player:
-			Main.level.loop_manager.saved_player_handler.submit_input_record(input_record)
+			#print("Input record: ", input_record, " Index: ", input_record.loop_index, " Input list: ", input_record.input_action_list)
+			level.loop_manager.saved_player_handler.submit_input_record(input_record)
 		else:
 			#print("player submitting record")
-			Main.level.loop_manager.submit_input_record(input_record)
+			#print("Input record: ", input_record, " Index: ", input_record.loop_index, " Input list: ", input_record.input_action_list)
+			level.loop_manager.submit_input_record(input_record)
 			
 			
 func queue_die() -> void:

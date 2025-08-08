@@ -25,10 +25,10 @@ spawn_point = NodePath("map/SpawnPoint")
 environment = SubResource("Environment_tb4ed")
 
 [node name="ColorRect" type="ColorRect" parent="map"]
-offset_left = -536.0
-offset_top = -275.0
-offset_right = 1745.0
-offset_bottom = 1168.0
+offset_left = -21839.0
+offset_top = -9913.0
+offset_right = 21552.0
+offset_bottom = 10049.0
 color = Color(0, 0, 0, 1)
 
 [node name="TileMapLayer" parent="map" instance=ExtResource("2_pxvvv")]

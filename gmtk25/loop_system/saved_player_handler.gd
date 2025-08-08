@@ -22,7 +22,7 @@ func submit_saved_player(player : Player, input_record : InputRecord) -> void:
 		return
 	print("submission received")
 	var saved_player_run_data : SavedPlayerRunData = create_saved_player_run_data(player, input_record)
-	if not running_saved_player: #hopefully we can compare and stack
+	if not get_top_stack_data(): #hopefully we can compare and stack
 		alert_player_about_beginning_saved_run(saved_player_run_data)
 	else:
 		push_warning("Received request to run saved player but already running saved player")
@@ -122,7 +122,7 @@ func end_loop_of_saved_run() -> void:
 	#if its from loop 1, it needs to be at postion 0
 	var input_data_index : int = get_top_stack_data().new_saved_player_input_record.loop_index - 1
 	Main.level.loop_manager.player_input_records.remove_at(input_data_index)
-	Main.level.loop_manager.player_input_records.insert(input_data_index, saved_player_run_data_stack.back().new_saved_player_input_record)
+	Main.level.loop_manager.player_input_records.insert(input_data_index, get_top_stack_data().new_saved_player_input_record)
 	#restore saved player as non current past self maye unnecessary
 	#restore once current as current maybe unneseccary
 	#make sure loop has correct player as current maybe unesseacry yet
@@ -185,6 +185,7 @@ func finish_loop() -> void:
 		
 	Main.level.loop_manager.change_current_player_mid_loop(data.reincarnate_once_current_player)
 	data.reincarnate_once_current_player.set_visuals_as_current_player(true)
+	data.reincarnate_once_current_player.reincarnate_once_current_player = false
 	data.reincarnate_once_current_player.current = true
 	
 	final_cleanup(data)
