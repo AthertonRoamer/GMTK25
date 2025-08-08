@@ -156,7 +156,7 @@ offset_bottom = -140.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Final Loop Ended"
+text = " Final Loop Ended "
 horizontal_alignment = 1
 script = ExtResource("6_fjv1a")
 
@@ -246,21 +246,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -58.0
-offset_right = 185.0
-offset_bottom = 137.0
+offset_left = -465.0
+offset_top = -63.0
+offset_right = 465.0
+offset_bottom = 131.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_gms7k")
 
 [node name="Label" type="Label" parent="SavedRunDisplay"]
+custom_minimum_size = Vector2(200, 90)
 layout_mode = 2
 size_flags_vertical = 6
-text = "Your past self from loop 0 
- has been saved from death 
-Go back and finish his run
- -1 seconds remaining"
+theme_override_font_sizes/font_size = 20
+text = " You have saved your past self's life in loop 1!
+Go back in time and finish your loop 1 run"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -271,6 +271,7 @@ layout_mode = 2
 [node name="Button" type="Button" parent="SavedRunDisplay"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
 text = "Space to Continue"
 
 [node name="PlayerHealthDisplay" type="HBoxContainer" parent="."]

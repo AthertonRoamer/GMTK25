@@ -5,6 +5,8 @@ signal opened_level
 signal closed_level
 
 @export var open_level_on_load : bool = true
+@export var test_level : LevelData
+@export var insert_test_level_at_beginning_of_list : bool = false
 @export var level_list : Array[LevelData]
 
 var active_level_scene : PackedScene
@@ -22,6 +24,8 @@ func _ready() -> void:
 func update_level_data() -> void:
 	var menu_idx : int = 0
 	var idx : int = 0
+	if insert_test_level_at_beginning_of_list:
+		level_list.insert(0, test_level)
 	for level_datum in level_list:
 		if not level_datum:
 			push_warning("Level data resource invalid")
@@ -47,7 +51,6 @@ func open_level(level_scene : PackedScene) -> void:
 	active_level = level
 	add_child(active_level)
 	opened_level.emit()
-	print("here")
 	
 	
 func close_active_level() -> void:

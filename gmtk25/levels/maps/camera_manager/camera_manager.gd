@@ -14,11 +14,16 @@ func _init() -> void:
 	map = Main.level.get_map()
 	Main.level.loop_manager.loop_began.connect(_on_loop_began)
 	Main.level.loop_manager.current_player_changed_mid_loop.connect(_on_current_player_changed_mid_loop)
+	Main.level.loop_manager.loop_replay_began.connect(_on_loop_replay_began)
 	
 	
 func _on_loop_began() -> void:
 	if is_instance_valid(Main.level.loop_manager.current_player) and not Main.level.loop_manager.current_player.died.is_connected(_on_current_player_died):
 		Main.level.loop_manager.current_player.died.connect(_on_current_player_died)
+		
+		
+func _on_loop_replay_began(data : SavedPlayerRunData) -> void:
+	set_camera_player(data.reincarnate_once_current_player)
 	
 	
 func _on_current_player_changed_mid_loop(old : Player, new : Player) -> void:
@@ -50,7 +55,7 @@ func open_post_death_pause_phase() -> void:
 	post_death_pause_phase = true
 	toggle_cameras_enabled = true
 	map.camera.enabled = false
-	activte_camera_by_index(0)
+	activate_camera_by_index(0)
 	get_tree().paused = true
 	post_death_pause_phase_set.emit(true)
 	
@@ -69,7 +74,7 @@ func _on_camera_player_died(dummy : PlayerDummy) -> void:
 		map.camera.position = dummy.position
 		map.camera.enabled = true
 	else:
-		activte_camera_by_index(0)
+		activate_camera_by_index(0)
 	pass
 	
 	
@@ -88,10 +93,10 @@ func _physics_process(_delta: float) -> void:
 			
 			
 func toggle_camera() -> void:
-	activte_camera_by_index(camera_index + 1)
+	activate_camera_by_index(camera_index + 1)
 	
 	
-func activte_camera_by_index(index : int) -> void:
+func activate_camera_by_index(index : int) -> void:
 	if get_camera_suitable_players().size() >= index + 1:
 		if set_camera_player(get_camera_suitable_players()[index]):
 			camera_index = index

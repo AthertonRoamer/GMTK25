@@ -5,6 +5,7 @@ signal loop_began
 signal loop_ended
 signal final_loop_ended
 signal current_player_changed_mid_loop(old : Player, new : Player)
+signal loop_replay_began(saved_player_run_data : SavedPlayerRunData)
 
 var level : CustomLevel
 
@@ -75,7 +76,8 @@ func rerun_loop_on_which_save_occured(data : SavedPlayerRunData) -> void:
 		spawn_past_player(record)
 	for p in map.players:
 		if p.input_record.loop_index == current_loop:
-			(p as Player).set_visuals_as_current_player(true)
+			p.set_visuals_as_current_player(true)
+			p.reincarnate_once_current_player = true
 			data.reincarnate_once_current_player = p
 	#spawn_current_player()
 	#start loop
@@ -85,6 +87,12 @@ func rerun_loop_on_which_save_occured(data : SavedPlayerRunData) -> void:
 	map.set_players_active(true)
 	map.active = true
 	loop_began.emit()
+	#if is_instance_valid(data.reincarnate_once_current_player):
+		#loop_replay_began.emit(data.reincarnate_once_current_player)
+	#else:
+		#loop_replay_began.emit(null)
+		#push_warning("Loop manager replaying past loop, no reincarnate once current player found")
+	loop_replay_began.emit(data)
 	
 	
 func reset_loop_timer() -> void:
@@ -182,7 +190,10 @@ func get_input_record_from_loop(loop_number : int) -> InputRecord:
 func _input(event : InputEvent) -> void:
 	if skip_to_end_of_loop_enabled and event.is_action_pressed("skip_to_end_of_loop"):
 		if loop_progressing:
-			end_loop()
-			run_next_loop()
+			if saved_player_handler.get_top_stack_data() != null and saved_player_handler.get_top_stack_data().currently_running_saved_player:
+				end_loop()
+			else:
+				end_loop()
+				run_next_loop()
 		
 		
